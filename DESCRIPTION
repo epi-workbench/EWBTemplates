@@ -1,0 +1,16 @@
+Package: templates
+Title: Brad Cannell's Templates and Themes
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Brad",
+           family = "Cannell",
+           role = c("aut", "cre"),
+           email = "brad.cannell@gmail.com",
+           comment = c(ORCID = "https://orcid.org/0000-0002-8711-6772"))
+Description: Brad Cannell's templates and themes.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
