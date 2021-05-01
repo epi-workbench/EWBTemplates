@@ -1,0 +1,73 @@
+---
+title: "Untitled"
+date: "2021-00-00 <br> Updated: `r Sys.Date()`"
+---
+
+Make any changes to the template file at: https://github.com/brad-cannell/templates
+
+# ⭐️Overview
+
+This file...
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+# 📦Load packages
+
+```{r message=FALSE}
+library(dplyr)
+```
+
+
+# 🌎Connect to UTH server 
+
+```{bash eval=FALSE}
+# Make sure you are connected to the VPN
+open 'smb://islgpcifs.uthouston.edu/sph_research/'
+```
+
+
+# 📥Import data 
+
+This data was created in...
+
+```{r}
+
+```
+
+```{r}
+dim()
+```
+
+
+# 🚧Data management
+
+```{r}
+
+```
+
+## 🧮Recode/calculate variables
+
+```{r}
+
+```
+
+
+# 📈Analysis
+
+```{r}
+
+```
+
+
+# 🗑Clean up
+
+```{r}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```
