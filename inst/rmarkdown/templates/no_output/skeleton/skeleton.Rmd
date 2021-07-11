@@ -9,10 +9,6 @@ Make any changes to the template file at: https://github.com/brad-cannell/templa
 
 This file...
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 
 # 📦Load packages
 

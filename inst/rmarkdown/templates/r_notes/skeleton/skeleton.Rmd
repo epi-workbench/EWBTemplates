@@ -1,0 +1,51 @@
+# Chapter name
+
+<!--
+Hidden comments placeholder
+-->
+
+```{r random-pic-from-url, echo=FALSE}
+knitr::include_graphics("https://picsum.photos/200/300")
+```
+
+## ⭐️Overview
+
+This chapter is about/the inspiration was...
+
+
+## 🌎Useful websites
+
+* https://stackoverflow.com/
+
+
+## 📦Load packages
+
+```{r message=FALSE}
+library(dplyr)
+```
+
+
+## 🔢Simulate data 
+
+Include the names data here. First, make some notes about adding data to a package...
+
+```{r}
+set.seed(123)
+df <- tibble(
+  x = rnorm(26),
+  y = letters
+)
+```
+
+
+<!--
+Clean up and add session info
+-->
+
+```{r echo=FALSE}
+rm(list = ls())
+```
+
+```{r echo=FALSE}
+sessionInfo()
+```
