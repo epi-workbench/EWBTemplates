@@ -10,7 +10,7 @@ knitr::include_graphics("https://picsum.photos/200/300")
 
 ## ⭐️Overview
 
-This chapter is about/the inspiration was...
+This chapter is about / The inspiration for this chapter was...
 
 
 ## 🌎Useful websites
