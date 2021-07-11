@@ -27,8 +27,6 @@ library(dplyr)
 
 ## 🔢Simulate data 
 
-Include the names data here. First, make some notes about adding data to a package...
-
 ```{r}
 set.seed(123)
 df <- tibble(
