@@ -21,7 +21,7 @@ This chapter is about / The inspiration for this chapter was...
 ## 📦Load packages
 
 ```{r message=FALSE}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 ```
 
 
