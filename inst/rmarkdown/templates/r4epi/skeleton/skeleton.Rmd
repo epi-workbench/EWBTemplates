@@ -2,6 +2,9 @@
 
 <!--
 Hidden comments placeholder
+
+To preview:
+bookdown::preview_chapter("chapters/.../name.Rmd")
 -->
 
 ```{r echo=FALSE}
