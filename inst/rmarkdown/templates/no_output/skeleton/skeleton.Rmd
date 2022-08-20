@@ -1,6 +1,6 @@
 ---
 title: "Untitled"
-date: "2021-00-00 <br> Updated: `r Sys.Date()`"
+date: "yyyy-mm-dd <br> Updated: `r Sys.Date()`"
 ---
 
 Make any changes to the template file at: https://github.com/brad-cannell/templates
@@ -13,17 +13,8 @@ This file...
 # 📦Load packages
 
 ```{r message=FALSE}
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 ```
-
-
-# 🌎Connect to UTH server 
-
-```{bash eval=FALSE}
-# Make sure you are connected to the VPN
-open 'smb://islgpcifs.uthouston.edu/sph_research/'
-```
-
 
 # 📥Import data 
 
