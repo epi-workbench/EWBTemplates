@@ -42,26 +42,26 @@ knitr::kable(my_colors)
 
 | group       | subgroup  | hex      | description       |
 |:------------|:----------|:---------|:------------------|
-| bradcannell | primary   | \#000000 | Black             |
-| bradcannell | primary   | \#FFFFFF | White             |
-| uthealth    | primary   | \#ae6042 | University Orange |
-| uthealth    | primary   | \#4e738a | University Blue   |
-| uthealth    | primary   | \#747578 | University Gray   |
-| uthealth    | secondary | \#002856 | Gulf Blue         |
-| uthealth    | secondary | \#f2b826 | Mustard Gold      |
-| uthealth    | secondary | \#587e6a | Dark Sage         |
-| uthealth    | secondary | \#7D708f | Dusty Lavender    |
-| uthealth    | neutral   | \#b0bfbc | Light Sage        |
-| uthealth    | neutral   | \#b6a999 | Sand              |
-| florida     | primary   | \#f24f00 | Core Orange       |
-| florida     | primary   | \#003896 | Core Blue         |
-| florida     | primary   | \#FA4616 | Screen Orange     |
-| florida     | primary   | \#0021A5 | Screen Blue       |
-| florida     | secondary | \#D32737 | Bottlebrush       |
-| florida     | secondary | \#F2A900 | Alachua           |
-| florida     | secondary | \#22884C | Gator             |
-| florida     | secondary | \#002657 | Dark Blue         |
-| florida     | secondary | \#6A2A60 | Perennial         |
+| bradcannell | Primary   | \#000000 | Black             |
+| bradcannell | Primary   | \#FFFFFF | White             |
+| uthealth    | Primary   | \#ae6042 | University Orange |
+| uthealth    | Primary   | \#4e738a | University Blue   |
+| uthealth    | Primary   | \#747578 | University Gray   |
+| uthealth    | Secondary | \#002856 | Gulf Blue         |
+| uthealth    | Secondary | \#f2b826 | Mustard Gold      |
+| uthealth    | Secondary | \#587e6a | Dark Sage         |
+| uthealth    | Secondary | \#7D708f | Dusty Lavender    |
+| uthealth    | Neutral   | \#b0bfbc | Light Sage        |
+| uthealth    | Neutral   | \#b6a999 | Sand              |
+| florida     | Primary   | \#f24f00 | Core Orange       |
+| florida     | Primary   | \#003896 | Core Blue         |
+| florida     | Primary   | \#FA4616 | Screen Orange     |
+| florida     | Primary   | \#0021A5 | Screen Blue       |
+| florida     | Secondary | \#D32737 | Bottlebrush       |
+| florida     | Secondary | \#F2A900 | Alachua           |
+| florida     | Secondary | \#22884C | Gator             |
+| florida     | Secondary | \#002657 | Dark Blue         |
+| florida     | Secondary | \#6A2A60 | Perennial         |
 
 Here’s a function to help create the color plots below.
 
@@ -102,8 +102,10 @@ color_plots <- function(.group) {
 }
 
 # For testing
-# color_plots("uthealth")
+color_plots("uthealth")
 ```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ### Brad Cannell color palette
 

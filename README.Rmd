@@ -89,7 +89,7 @@ color_plots <- function(.group) {
 }
 
 # For testing
-# color_plots("uthealth")
+color_plots("uthealth")
 ```
 
 ### Brad Cannell color palette
