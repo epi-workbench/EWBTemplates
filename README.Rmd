@@ -13,6 +13,12 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
+library(templates)
+```
+
 # templates
 
 <!-- badges: start -->
@@ -28,13 +34,113 @@ You can install templates from GitHub with:
 devtools::install_github("brad-cannell/templates")
 ```
 
-## Example
+## Rmd templates
 
-This is a basic example which shows you how to solve a common problem:
+The templates package contains several Rmd document templates. They are located in `inst/rmarkdown/templates`.
 
-```{r example}
-library(templates)
-## basic example code
+## Colors
+
+The templates package contains several color palettes. The easiest way to access them is from the `my_colors` data frame.
+
+```{r}
+data(my_colors)
+```
+
+```{r}
+knitr::kable(my_colors)
+```
+
+Here's a function to help create the color plots below.
+
+```{r}
+color_plots <- function(.group) {
+  df <- my_colors %>% 
+    filter(group == .group) %>% 
+    group_by(subgroup) %>% 
+    mutate(x = row_number()) %>% 
+    ungroup() %>% 
+    mutate(hex = factor(hex, hex, hex))
+  
+  ggplot(df, aes(x = x, y = 1, fill = hex)) +
+    geom_raster() +
+    geom_text(aes(label = description), color = "white") +
+    facet_wrap(vars(subgroup), ncol = 1) +
+    scale_fill_manual("Hexidecimal code", values = as.character(df$hex)) +
+    theme(
+      # Remove background
+      panel.background = element_rect(fill = "transparent"),
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      plot.background  = element_rect(fill = "transparent"),
+      
+      # Remove x axis
+      axis.title.x = element_blank(),
+      axis.text.x  = element_blank(),
+      axis.ticks.x = element_blank(),
+      
+      # Remove y axis
+      axis.title.y = element_blank(),
+      axis.text.y  = element_blank(),
+      axis.ticks.y = element_blank(),
+      
+      # Facet labels
+      strip.background = element_rect(color = "black", fill = "transparent")
+    )
+}
+
+# For testing
+# color_plots("uthealth")
+```
+
+### Brad Cannell color palette
+
+Currently, the bradcannell color palette only contains black and white. There is no need to "show" it.
+
+### UTHealth color palette
+
+```{r}
+color_plots("uthealth")
+```
+
+### Florida color palette
+
+```{r}
+color_plots("florida")
 ```
 
 
+## Images
+
+The templates package contains several logos and images. They are located in `man/figures`. Here is a sample.
+
+### Brad Cannell
+
+```{r echo=FALSE}
+knitr::include_graphics("man/figures/bradcannell_logo/RGB/PNG/cannell_h.png")
+knitr::include_graphics("man/figures/bradcannell_logo/RGB/PNG/cannell_v.png")
+```
+
+## R4Epi
+
+```{r echo=FALSE}
+knitr::include_graphics("man/figures/r4epi_logo/r4epi_hex.png")
+knitr::include_graphics("man/figures/r4epi_logo/r4epi_hex_circle.png")
+```
+
+## Hex Stickers
+
+```{r echo=FALSE}
+knitr::include_graphics("man/figures/codebookr_hex/codebookr_hex.png")
+knitr::include_graphics("man/figures/freqtables_hex/freqtables_hex.png")
+knitr::include_graphics("man/figures/meantables_hex/meantables_hex.png")
+knitr::include_graphics("man/figures/tabler_hex/tabler_hex.png")
+```
+
+## UTHealth
+
+```{r echo=FALSE}
+knitr::include_graphics("man/figures/uthealth/uth_sph_horizontal_school_below_orange_gray.png")
+knitr::include_graphics("man/figures/uthealth/uth_sph_horizontal_school_right_orange_gray.png")
+knitr::include_graphics("man/figures/uthealth/uth_sph_standard_school_below_orange_gray.png")
+knitr::include_graphics("man/figures/uthealth/uth_sph_standard_school_right_orange_gray.png")
+```
