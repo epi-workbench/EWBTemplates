@@ -45,7 +45,7 @@ new_quarto_no_output <- function(
 
   # Path to the template file inside the templates package
   template_name_qmd  <- paste0(template_name, ".qmd")
-  template_file_path <- paste0("/inst/extdata/_extensions/", template_name, "/", template_name_qmd)
+  template_file_path <- paste0("extdata/_extensions/", template_name, "/", template_name_qmd)
 
   # Path to the new qmd file
   file_name_qmd  <- paste0(file_name, ".qmd")
