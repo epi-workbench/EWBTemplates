@@ -3,4 +3,3 @@
 export(new_quarto_no_output)
 export(new_quarto_r4epi)
 export(new_quarto_r_notes)
-importFrom(utils,file.edit)

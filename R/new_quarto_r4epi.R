@@ -19,14 +19,14 @@
 #' @examples
 #'
 #' # With defaults
-#' new_quarto_r4epi()
+#' # new_quarto_r4epi()
 #'
 #' # Set a new file name
-#' new_quarto_r4epi("test_qmd_file")
+#' # new_quarto_r4epi("test_qmd_file")
 #'
 #' # Set new file location other than here::here()
 #' # No forward slash at the end
-#' new_quarto_r4epi(file_loc = "/Users/bradcannell/Desktop")
+#' # new_quarto_r4epi(file_loc = "/Users/bradcannell/Desktop")
 new_quarto_r4epi <- function(
     file_name     = NULL,
     file_loc      = here::here(),
@@ -44,7 +44,7 @@ new_quarto_r4epi <- function(
 
   # Path to the template file inside the templates package
   template_name_qmd  <- paste0(template_name, ".qmd")
-  template_file_path <- paste0("/inst/extdata/_extensions/", template_name, "/", template_name_qmd)
+  template_file_path <- paste0("extdata/_extensions/", template_name, "/", template_name_qmd)
 
   # Path to the new qmd file
   file_name_qmd  <- paste0(file_name, ".qmd")

@@ -15,7 +15,6 @@
 #'
 #' @return A message to the console.
 #' @export
-#' @importFrom utils file.edit
 #'
 #' @examples
 #'
@@ -90,20 +89,12 @@ new_quarto_no_output <- function(
 
   # Copy template file from the templates package to the location specified
   # in file_loc
-  # file.copy(
-  #   from      = system.file(template_file_path, package = "templates"),
-  #   to        = file_name_path,
-  #   overwrite = FALSE,
-  #   copy.mode = TRUE
-  # )
-
-  tempate_contents <- readLines(
-    system.file(template_file_path, package = "templates")
+  file.copy(
+    from      = system.file(template_file_path, package = "templates"),
+    to        = file_name_path,
+    overwrite = FALSE,
+    copy.mode = TRUE
   )
-
-  file.create(file_name_path)
-
-  writeLines(tempate_contents, file_name_path)
 
   # ===========================================================================
   # Create message for user
@@ -120,7 +111,7 @@ new_quarto_no_output <- function(
   }
 
   # Open the new file in the editor
-  file.edit(file_name_path)
+  utils::file.edit(file_name_path)
 
 }
 

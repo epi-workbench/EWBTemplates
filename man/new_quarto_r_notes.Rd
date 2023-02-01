@@ -32,12 +32,12 @@ Create a Blank Quarto File - R Notes
 \examples{
 
 # With defaults
-new_quarto_r_notes()
+# new_quarto_r_notes()
 
 # Set a new file name
-new_quarto_r_notes("test_qmd_file")
+# new_quarto_r_notes("test_qmd_file")
 
 # Set new file location other than here::here()
 # No forward slash at the end
-new_quarto_r_notes(file_loc = "/Users/bradcannell/Desktop")
+# new_quarto_r_notes(file_loc = "/Users/bradcannell/Desktop")
 }
