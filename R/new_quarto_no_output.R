@@ -15,18 +15,19 @@
 #'
 #' @return A message to the console.
 #' @export
+#' @importFrom utils file.edit
 #'
 #' @examples
 #'
 #' # With defaults
-#' new_quarto_no_output()
+#' # new_quarto_no_output()
 #'
 #' # Set a new file name
-#' new_quarto_no_output("test_qmd_file")
+#' # new_quarto_no_output("test_qmd_file")
 #'
 #' # Set new file location other than here::here()
 #' # No forward slash at the end
-#' new_quarto_no_output(file_loc = "/Users/bradcannell/Desktop")
+#' # new_quarto_no_output(file_loc = "/Users/bradcannell/Desktop")
 new_quarto_no_output <- function(
     file_name     = NULL,
     file_loc      = here::here(),
@@ -89,12 +90,20 @@ new_quarto_no_output <- function(
 
   # Copy template file from the templates package to the location specified
   # in file_loc
-  file.copy(
-    from      = system.file(template_file_path, package = "templates"),
-    to        = file_name_path,
-    overwrite = FALSE,
-    copy.mode = TRUE
+  # file.copy(
+  #   from      = system.file(template_file_path, package = "templates"),
+  #   to        = file_name_path,
+  #   overwrite = FALSE,
+  #   copy.mode = TRUE
+  # )
+
+  tempate_contents <- readLines(
+    system.file(template_file_path, package = "templates")
   )
+
+  file.create(file_name_path)
+
+  writeLines(tempate_contents, file_name_path)
 
   # ===========================================================================
   # Create message for user
@@ -111,7 +120,7 @@ new_quarto_no_output <- function(
   }
 
   # Open the new file in the editor
-  utils::file.edit(file_name_path)
+  file.edit(file_name_path)
 
 }
 
