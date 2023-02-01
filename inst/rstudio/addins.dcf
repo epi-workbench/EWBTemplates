@@ -1,0 +1,14 @@
+Name: Quarto - No Output
+Description: Create a Blank Quarto File - No Output
+Binding: new_quarto_no_output
+Interactive: false
+
+Name: Quarto - R Notes
+Description: Brad Cannell's template for creating notes for the R Notes Quarto Book project.
+Binding: new_quarto_r_notes
+Interactive: false
+
+Name: Quarto - R4Epi
+Description: Brad Cannell's template for creating chapters in R4Epi.
+Binding: new_quarto_r4epi
+Interactive: false
