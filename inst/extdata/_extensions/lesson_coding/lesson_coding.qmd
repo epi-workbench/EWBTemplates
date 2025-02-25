@@ -1,0 +1,134 @@
+---
+title: "Add Lesson Title Here"
+date: 2025-02-24
+date-modified: last-modified
+---
+
+Make any changes to the template file at: https://github.com/brad-cannell/templates
+
+# Writing Test, Solution, and Code Blocks in Markdown
+
+This guide provides instructions on how to write **test blocks**, **solution blocks**, **code blocks**, and **hints** in markdown files 
+
+## Test Blocks
+
+Test blocks are enclosed between the following markers:
+
+```html
+<!-- TEST_BLOCK_START -->
+<!-- TEST_BLOCK_END -->
+```
+
+### Example
+```markdown
+<!-- TEST_BLOCK_START -->
+# Write your test cases here
+
+assert add(2, 3) == 5
+assert subtract(5, 2) == 3
+<!-- TEST_BLOCK_END -->
+```
+
+## Solution Blocks
+
+Solution blocks are enclosed between the following markers:
+
+```html
+<!-- SOLUTION_BLOCK_START -->
+<!-- SOLUTION_BLOCK_END -->
+```
+
+### Example
+```markdown
+<!-- SOLUTION_BLOCK_START -->
+# Write your solution code here
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+<!-- SOLUTION_BLOCK_END -->
+```
+
+## Regular Code Blocks
+
+### Runnable Code Blocks
+
+Runnable code blocks are denoted using curly braces, such as:
+
+```markdown
+```{python}
+# This is a runnable code block
+def greet(name):
+    return f"Hello, {name}"
+
+print(greet("World"))
+```
+
+
+The above block can be executed in EPI Course Page .
+
+### Non-Runnable Code Blocks
+
+Non-runnable code blocks are written without curly braces, using only the language name after the triple backticks:
+
+```markdown
+```python
+# This is a non-runnable code block
+# It is used to display code for reference only.
+
+def greet(name):
+    return f"Hello, {name}"
+```
+
+
+Non-runnable code blocks are purely for display purposes and cannot be executed directly.
+
+## Hints
+
+Hints can be added below any code block using the following format:
+
+```html
+<!-- HINT:
+
+- Provide a list of helpful hints for understanding or solving the problem.
+- Use markdown formatting for emphasis and clarity.
+
+-->
+```
+
+### Example
+
+```markdown
+```{python}
+# This code plots data points on a graph.
+import matplotlib.pyplot as plt
+
+plt.scatter(x, y, alpha=0.5)
+plt.show()
+```
+
+<!-- HINT:
+
+- **`plt.scatter(x, y)`**: Plots points on the graph.
+- **`alpha=0.5`**: Makes the points semi-transparent to reduce overplotting.
+
+-->
+```
+
+### Guidelines for Hints
+1. Hints should start with **`<!-- HINT:`** and end with **`-->`**.
+2. Use bullet points to list hints.
+3. Use markdown formatting (e.g., **bold**, *italic*, or inline code `like this`) for better readability.
+4. Place hints immediately below the related code block.
+
+
+## Summary of Conventions
+1. Use **test blocks** (`<!-- TEST_BLOCK_START -->` and `<!-- TEST_BLOCK_END -->`) for test cases.
+2. Use **solution blocks** (`<!-- SOLUTION_BLOCK_START -->` and `<!-- SOLUTION_BLOCK_END -->`) for solutions.
+3. Use **runnable code blocks** (````{python}`) for executable code.
+4. Use **non-runnable code blocks** (````python`) for display-only code.
+5. Add **hints** below relevant code blocks using the `<!-- HINT:` format.
+
+By following these conventions, your markdown files will be well-structured and easy to parse.

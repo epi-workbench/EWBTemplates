@@ -16,45 +16,47 @@ knitr::opts_chunk$set(
 ```{r}
 library(dplyr, warn.conflicts = FALSE)
 library(ggplot2)
-library(templates)
+library(EWBTemplates)
 ```
 
-# templates
+# EWBTemplates
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Brad Cannell's templates and themes
+Templates and themes for Epi-Workbench.
 
 ## Installation
 
 You can install templates from GitHub with:
 
 ``` r
-devtools::install_github("brad-cannell/templates")
+devtools::install_github("epi-workbench/EWBTemplates")
 ```
 
-## Rmd templates
+## Template files
 
-The templates package contains several Rmd document templates. They are located in `inst/rmarkdown/templates`.
+The EWBTemplates package template files for things like creating coding lessons. The template files are located in `inst/templates`.
+
+Additionally, this package contains **RStudio addins** to make loading template files even easier. The code for the addins are located in `inst/extdata`, `inst/rstudio`, and `R/`.
 
 ## Colors
 
-The templates package contains several color palettes. The easiest way to access them is from the `my_colors` data frame.
+The EWBTemplates package contains several color palettes. The easiest way to access them is from the `ewb_colors` data frame.
 
 ```{r}
-data(my_colors)
+data(ewb_colors)
 ```
 
 ```{r}
-knitr::kable(my_colors)
+knitr::kable(ewb_colors)
 ```
 
 Here's a function to help create the color plots below.
 
 ```{r}
 color_plots <- function(.group) {
-  df <- my_colors %>% 
+  df <- ewb_colors %>% 
     filter(group == .group) %>% 
     group_by(subgroup) %>% 
     mutate(x = row_number()) %>% 
@@ -89,58 +91,25 @@ color_plots <- function(.group) {
 }
 
 # For testing
-color_plots("uthealth")
+# color_plots("ewb")
 ```
 
-### Brad Cannell color palette
-
-Currently, the bradcannell color palette only contains black and white. There is no need to "show" it.
-
-### UTHealth color palette
+### EWB color palette
 
 ```{r}
-color_plots("uthealth")
+color_plots("ewb")
 ```
-
-### Florida color palette
-
-```{r}
-color_plots("florida")
-```
-
 
 ## Images
 
-The templates package contains several logos and images. They are located in `man/figures`. Here is a sample.
-
-### Brad Cannell
+The EWBTemplates package contains several logos and images. They are located in `man/figures`. Here is a sample.
 
 ```{r echo=FALSE}
-knitr::include_graphics("man/figures/bradcannell_logo/RGB/PNG/cannell_h.png")
-knitr::include_graphics("man/figures/bradcannell_logo/RGB/PNG/cannell_v.png")
-```
-
-## R4Epi
-
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/r4epi_logo/r4epi_hex.png")
-knitr::include_graphics("man/figures/r4epi_logo/r4epi_hex_circle.png")
-```
-
-## Hex Stickers
-
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/codebookr_hex/codebookr_hex.png")
-knitr::include_graphics("man/figures/freqtables_hex/freqtables_hex.png")
-knitr::include_graphics("man/figures/meantables_hex/meantables_hex.png")
-knitr::include_graphics("man/figures/tabler_hex/tabler_hex.png")
-```
-
-## UTHealth
-
-```{r echo=FALSE}
-knitr::include_graphics("man/figures/uthealth/uth_sph_horizontal_school_below_orange_gray.png")
-knitr::include_graphics("man/figures/uthealth/uth_sph_horizontal_school_right_orange_gray.png")
-knitr::include_graphics("man/figures/uthealth/uth_sph_standard_school_below_orange_gray.png")
-knitr::include_graphics("man/figures/uthealth/uth_sph_standard_school_right_orange_gray.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_full_logo_on_dark_bg.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_dark_blue_full_logo.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_dark_blue_epi_logo.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_epi_on_dark_bg.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_dark_blue_ewb_logo.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_ewb_on_dark_bg.png")
+knitr::include_graphics("man/figures/ewb_logos/epi_workbench_epi_favicon.png")
 ```

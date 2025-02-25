@@ -4,70 +4,59 @@
 ``` r
 library(dplyr, warn.conflicts = FALSE)
 library(ggplot2)
-library(templates)
+library(EWBTemplates)
 ```
 
-# templates
+# EWBTemplates
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-Brad Cannell’s templates and themes
+Templates and themes for Epi-Workbench.
 
 ## Installation
 
 You can install templates from GitHub with:
 
 ``` r
-devtools::install_github("brad-cannell/templates")
+devtools::install_github("epi-workbench/EWBTemplates")
 ```
 
-## Rmd templates
+## Template files
 
-The templates package contains several Rmd document templates. They are
-located in `inst/rmarkdown/templates`.
+The EWBTemplates package template files for things like creating coding
+lessons. The template files are located in `inst/templates`.
+
+Additionally, this package contains **RStudio addins** to make loading
+template files even easier. The code for the addins are located in
+`inst/extdata`, `inst/rstudio`, and `R/`.
 
 ## Colors
 
-The templates package contains several color palettes. The easiest way
-to access them is from the `my_colors` data frame.
+The EWBTemplates package contains several color palettes. The easiest
+way to access them is from the `ewb_colors` data frame.
 
 ``` r
-data(my_colors)
+data(ewb_colors)
 ```
 
 ``` r
-knitr::kable(my_colors)
+knitr::kable(ewb_colors)
 ```
 
-| group       | subgroup  | hex      | description       |
-|:------------|:----------|:---------|:------------------|
-| bradcannell | Primary   | \#000000 | Black             |
-| bradcannell | Primary   | \#FFFFFF | White             |
-| uthealth    | Primary   | \#ae6042 | University Orange |
-| uthealth    | Primary   | \#4e738a | University Blue   |
-| uthealth    | Primary   | \#747578 | University Gray   |
-| uthealth    | Secondary | \#002856 | Gulf Blue         |
-| uthealth    | Secondary | \#f2b826 | Mustard Gold      |
-| uthealth    | Secondary | \#587e6a | Dark Sage         |
-| uthealth    | Secondary | \#7D708f | Dusty Lavender    |
-| uthealth    | Neutral   | \#b0bfbc | Light Sage        |
-| uthealth    | Neutral   | \#b6a999 | Sand              |
-| florida     | Primary   | \#f24f00 | Core Orange       |
-| florida     | Primary   | \#003896 | Core Blue         |
-| florida     | Primary   | \#FA4616 | Screen Orange     |
-| florida     | Primary   | \#0021A5 | Screen Blue       |
-| florida     | Secondary | \#D32737 | Bottlebrush       |
-| florida     | Secondary | \#F2A900 | Alachua           |
-| florida     | Secondary | \#22884C | Gator             |
-| florida     | Secondary | \#002657 | Dark Blue         |
-| florida     | Secondary | \#6A2A60 | Perennial         |
+| group | subgroup | hex      | description |
+|:------|:---------|:---------|:------------|
+| ewb   | NA       | \#4E5F72 | Dark Blue   |
+| ewb   | NA       | \#FFD662 | Yellow      |
+| ewb   | NA       | \#28A745 | Green       |
+| ewb   | NA       | \#6C757D | Gray        |
+| ewb   | NA       | \#FD7E14 | Orange      |
 
 Here’s a function to help create the color plots below.
 
 ``` r
 color_plots <- function(.group) {
-  df <- my_colors %>% 
+  df <- ewb_colors %>% 
     filter(group == .group) %>% 
     group_by(subgroup) %>% 
     mutate(x = row_number()) %>% 
@@ -102,49 +91,20 @@ color_plots <- function(.group) {
 }
 
 # For testing
-color_plots("uthealth")
+# color_plots("ewb")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
-
-### Brad Cannell color palette
-
-Currently, the bradcannell color palette only contains black and white.
-There is no need to “show” it.
-
-### UTHealth color palette
+### EWB color palette
 
 ``` r
-color_plots("uthealth")
+color_plots("ewb")
 ```
 
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
-### Florida color palette
-
-``` r
-color_plots("florida")
-```
-
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
-
 ## Images
 
-The templates package contains several logos and images. They are
+The EWBTemplates package contains several logos and images. They are
 located in `man/figures`. Here is a sample.
 
-### Brad Cannell
-
-<img src="man/figures/bradcannell_logo/RGB/PNG/cannell_h.png" width="100%" /><img src="man/figures/bradcannell_logo/RGB/PNG/cannell_v.png" width="100%" />
-
-## R4Epi
-
-<img src="man/figures/r4epi_logo/r4epi_hex.png" width="100%" /><img src="man/figures/r4epi_logo/r4epi_hex_circle.png" width="100%" />
-
-## Hex Stickers
-
-<img src="man/figures/codebookr_hex/codebookr_hex.png" width="100%" /><img src="man/figures/freqtables_hex/freqtables_hex.png" width="100%" /><img src="man/figures/meantables_hex/meantables_hex.png" width="100%" /><img src="man/figures/tabler_hex/tabler_hex.png" width="100%" />
-
-## UTHealth
-
-<img src="man/figures/uthealth/uth_sph_horizontal_school_below_orange_gray.png" width="100%" /><img src="man/figures/uthealth/uth_sph_horizontal_school_right_orange_gray.png" width="100%" /><img src="man/figures/uthealth/uth_sph_standard_school_below_orange_gray.png" width="100%" /><img src="man/figures/uthealth/uth_sph_standard_school_right_orange_gray.png" width="100%" />
+<img src="man/figures/ewb_logos/epi_workbench_full_logo_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_full_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_epi_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_epi_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_ewb_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_ewb_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_epi_favicon.png" width="100%" />

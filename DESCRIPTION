@@ -1,21 +1,21 @@
-Package: templates
-Title: Brad Cannell's Templates and Themes
-Version: 0.2.1
+Package: EWBTemplates
+Title: Epi-Workbench Templates and Themes
+Version: 0.0.9000
 Authors@R: 
     person(given = "Brad",
            family = "Cannell",
            role = c("aut", "cre"),
-           email = "brad.cannell@gmail.com",
-           comment = c(ORCID = "https://orcid.org/0000-0002-8711-6772"))
-Description: Brad Cannell's templates and themes.
+           email = "brad.cannell@epi-workbench.com")
+Description: Epi-Workbench templates and themes.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
+Imports: 
+    here
