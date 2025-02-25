@@ -4,7 +4,8 @@
 
 * This is a development version of the package and subject to major changes.
 
-* This version of the the EWBTemplates package will not be made available on CRAN.
+* This version of the the EWBTemplates package will not be made available on 
+CRAN.
 
 * This version contains:
   
@@ -13,3 +14,7 @@
   * A collection of EWB brand standard logos.
   
   * A template for creating EWB coding lessons.
+
+  * A convenience function, `color_plots()`, for visualizing color palettes 
+  like the EWB brand standard color palette created in the `EWBTemplates` 
+  package.

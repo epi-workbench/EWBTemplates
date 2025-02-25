@@ -44,63 +44,21 @@ data(ewb_colors)
 knitr::kable(ewb_colors)
 ```
 
-| group | subgroup | hex      | description |
-|:------|:---------|:---------|:------------|
-| ewb   | NA       | \#4E5F72 | Dark Blue   |
-| ewb   | NA       | \#FFD662 | Yellow      |
-| ewb   | NA       | \#28A745 | Green       |
-| ewb   | NA       | \#6C757D | Gray        |
-| ewb   | NA       | \#FD7E14 | Orange      |
-
-Here’s a function to help create the color plots below.
-
-``` r
-color_plots <- function(.group) {
-  df <- ewb_colors %>% 
-    filter(group == .group) %>% 
-    group_by(subgroup) %>% 
-    mutate(x = row_number()) %>% 
-    ungroup() %>% 
-    mutate(hex = factor(hex, hex, hex))
-  
-  ggplot(df, aes(x = x, y = 1, fill = hex)) +
-    geom_raster() +
-    geom_text(aes(label = description), color = "white") +
-    facet_wrap(vars(subgroup), ncol = 1) +
-    scale_fill_manual("Hexidecimal code", values = as.character(df$hex)) +
-    theme(
-      # Remove background
-      panel.background = element_rect(fill = "transparent"),
-      panel.grid.major = element_blank(),
-      panel.grid.minor = element_blank(),
-      plot.background  = element_rect(fill = "transparent"),
-      
-      # Remove x axis
-      axis.title.x = element_blank(),
-      axis.text.x  = element_blank(),
-      axis.ticks.x = element_blank(),
-      
-      # Remove y axis
-      axis.title.y = element_blank(),
-      axis.text.y  = element_blank(),
-      axis.ticks.y = element_blank(),
-      
-      # Facet labels
-      strip.background = element_rect(color = "black", fill = "transparent")
-    )
-}
-
-# For testing
-# color_plots("ewb")
-```
+| group | subgroup  | hex      | description |
+|:------|:----------|:---------|:------------|
+| ewb   | Primary   | \#4E5F72 | Dark Blue   |
+| ewb   | Primary   | \#FFD662 | Yellow      |
+| ewb   | Secondary | \#28A745 | Green       |
+| ewb   | Secondary | \#6C757D | Gray        |
+| ewb   | Accent    | \#FD7E14 | Orange      |
 
 ### EWB color palette
 
 ``` r
-color_plots("ewb")
+ewb_colors |> color_plots("ewb")
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
 
 ## Images
 
