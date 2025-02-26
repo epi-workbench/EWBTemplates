@@ -38,8 +38,6 @@ devtools::install_github("epi-workbench/EWBTemplates")
 
 The EWBTemplates package template files for things like creating coding lessons. The template files are located in `inst/templates`.
 
-Additionally, this package contains **RStudio addins** to make loading template files even easier. The code for the addins are located in `inst/extdata`, `inst/rstudio`, and `R/`.
-
 ## Colors
 
 The EWBTemplates package contains several color palettes. The easiest way to access them is from the `ewb_colors` data frame.
