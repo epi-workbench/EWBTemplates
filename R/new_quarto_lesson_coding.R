@@ -11,6 +11,10 @@
 #'   should only have change this value if you change the name of the skeleton
 #'   file.
 #'
+#' @param interactive If TRUE, an interactive text editor will pop up on screen
+#'  allowing users to make edits to the new Quarto file before saving it. This
+#'  accomplished via a call to `utils::file.edit`.
+#'
 #' @return A message to the console.
 #' @export
 #'
@@ -28,7 +32,8 @@
 new_quarto_lesson_coding <- function(
     file_name     = NULL,
     file_loc      = here::here(),
-    template_name = "lesson_coding") {
+    template_name = "lesson_coding",
+    interactive   = FALSE) {
 
   # ===========================================================================
   # Set up file names and paths
@@ -108,9 +113,10 @@ new_quarto_lesson_coding <- function(
     message("New file appears not to have been created.")
   }
 
-  # Open the new file in the editor
-  utils::file.edit(file_name_path)
-
+  # ===========================================================================
+  # Optionally open the new file in the editor
+  # ===========================================================================
+  if (interactive == TRUE) utils::file.edit(file_name_path)
 }
 
 # For testing

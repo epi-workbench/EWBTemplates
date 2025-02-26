@@ -7,7 +7,8 @@
 new_quarto_lesson_coding(
   file_name = NULL,
   file_loc = here::here(),
-  template_name = "lesson_coding"
+  template_name = "lesson_coding",
+  interactive = FALSE
 )
 }
 \arguments{
@@ -21,6 +22,10 @@ The default location is the value returned by \code{here::here()}.}
 \item{template_name}{The name of the Quarto skeleton file = "lesson_coding". You
 should only have change this value if you change the name of the skeleton
 file.}
+
+\item{interactive}{If TRUE, an interactive text editor will pop up on screen
+allowing users to make edits to the new Quarto file before saving it. This
+accomplished via a call to \code{utils::file.edit}.}
 }
 \value{
 A message to the console.

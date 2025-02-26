@@ -14,10 +14,14 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0),
+    tibble,
+    vdiffr
 Depends: 
     R (>= 2.10)
 Imports: 
     dplyr,
     ggplot2,
     here
+Config/testthat/edition: 3
