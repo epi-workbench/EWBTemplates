@@ -12,7 +12,9 @@ library(EWBTemplates)
 <!-- badges: start -->
 <!-- badges: end -->
 
-Templates and themes for Epi-Workbench.
+This repository contains templates and themes for Epi-Workbench course development. It is public facing, but intended primarily for course authors.
+
+The main [epi-workbench](https://github.com/epi-workbench/epi-workbench) repository contains the [course roadmap](https://github.com/orgs/epi-workbench/projects/5) and other information intended for the general public.
 
 ## Installation
 
