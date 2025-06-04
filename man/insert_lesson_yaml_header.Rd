@@ -10,12 +10,13 @@ insert_lesson_yaml_header()
 lesson_yaml_header()
 }
 \value{
-A character string containing the YAML header.
+Invisibly returns the YAML header text as a single character
+string.
 }
 \description{
-Insert the standard Epi-Workbench lesson YAML header at the cursor location in RStudio.
+This add-in inserts the standard YAML header used for
+Epi-Workbench lessons at the current cursor location in RStudio.
 }
 \examples{
-if(interactive()) insert_lesson_yaml_header()
+if (interactive()) insert_lesson_yaml_header()
 }
-
