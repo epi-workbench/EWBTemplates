@@ -1,0 +1,20 @@
+{
+  // Shows up in VS Code / Codespaces
+  "name": "R Dev Environment",
+
+  // 1️⃣  Tell it to build the Dockerfile we just wrote
+  "build": { "dockerfile": "Dockerfile" },
+
+  // 2️⃣  Run immediately after container starts
+  //     – installs your package into the lib path and runs the tests
+  "postCreateCommand": "R -q -e 'devtools::install(); devtools::test()'",
+
+  // 3️⃣  Forward ports, VS Code settings, etc. (optional)
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "r.rterm.linux": "/usr/local/bin/R"
+      }
+    }
+  }
+}
