@@ -2,3 +2,5 @@
 
 export(color_plots)
 export(new_quarto_lesson_coding)
+export(insert_lesson_yaml_header)
+export(lesson_yaml_header)

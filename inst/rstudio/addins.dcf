@@ -2,3 +2,8 @@ Name: Quarto - Coding Lesson
 Description: Create an EWB coding lesson in a Quarto file from a template.
 Binding: new_quarto_lesson_coding
 Interactive: false
+
+Name: Insert Lesson YAML Header
+Description: Insert the standard lesson YAML header into a Quarto file.
+Binding: insert_lesson_yaml_header
+Interactive: false
