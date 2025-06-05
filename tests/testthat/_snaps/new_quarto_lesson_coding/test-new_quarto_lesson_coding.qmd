@@ -1,135 +1,100 @@
 ---
 title: "Add Lesson Title Here"
 author: "Your Name"
-date: "Date Created"
-date-modified: last-modified
+date: "yyyy-mm-dd"
+date-modified: "yyyy-mm-dd"
+type: "Coding Exercise"
+category: "Programming Concepts"
+subcategory: "R Programming"
+tags:
+  - placeholder
 ---
 
-Make any changes to the template file at: https://github.com/brad-cannell/templates
+Make changes to the template file at: https://github.com/brad-cannell/templates
 
-# Writing Test, Solution, and Code Blocks in Markdown
-
-This guide provides instructions on how to write **test blocks**, **solution blocks**, **code blocks**, and **hints** in markdown files 
-
-## Test Blocks
-
-Test blocks are enclosed between the following markers:
-
-```html
-<!-- TEST_BLOCK_START -->
-<!-- TEST_BLOCK_END -->
+```{r, type=initial}
+library(testthat)
 ```
 
-### Example
-```markdown
-<!-- TEST_BLOCK_START -->
-# Write your test cases here
+# Load packages
 
-assert add(2, 3) == 5
-assert subtract(5, 2) == 3
-<!-- TEST_BLOCK_END -->
+```{r}
+library(dplyr, warn.conflicts = FALSE)
 ```
 
-## Solution Blocks
+# Data
 
-Solution blocks are enclosed between the following markers:
+Add link to wiki about datasets
 
-```html
-<!-- SOLUTION_BLOCK_START -->
-<!-- SOLUTION_BLOCK_END -->
+[Click to download data.xls](Lesson File Uploder URL)
+
+# Images
+
+Add link to 
+
+
+# Code blocks
+
+```{r}
+# x <- 10
+x <- __
 ```
 
-### Example
-```markdown
-<!-- SOLUTION_BLOCK_START -->
-# Write your solution code here
-
-def add(a, b):
-    return a + b
-
-def subtract(a, b):
-    return a - b
-<!-- SOLUTION_BLOCK_END -->
+```{r, type=solution}
+# Solution Code Block
+x <- 10
 ```
 
-## Regular Code Blocks
+```{r, type=hide}
+# Setup
+# Optionally, reset the environment.
+rm(list = ls(envir = student_env), envir = student_env)
 
-### Runnable Code Blocks
+# Create a new environment to evaluate the student's code
+student_env <- new.env()
 
-Runnable code blocks are denoted using curly braces, such as:
+# Example: simulate evaluating a student's submission
+# (Replace the string with actual code from student input)
+correct     <- "x <- 10" # Change this to test incorrect submissions
+wrong_name  <- "z <- 10" 
+wrong_value <- "x <- 11" 
 
-```markdown
-```{python}
-# This is a runnable code block
-def greet(name):
-    return f"Hello, {name}"
+# Set the active submission here (change only this line to switch test cases)
+test_code <- correct
 
-print(greet("World"))
+# Evaluate the code in the isolated environment
+eval(parse(text = correct), envir = student_env)
+
+# Tests
+# 1 – Confirm x exists
+test_that("Object 'x' is created", {
+  expect_true(exists("x", envir = student_env))
+})
+
+# 2 – Confirm x is of the expected type and value
+test_that("x is a numeric value", {
+  expect_type(student_env$x, "double")
+  expect_equal(student_env$x, 10)  # optional: expected value
+})
 ```
 
+```{r, type=test}
+# 1 – Confirm x exists
+test_that("Object 'x' is created", {
+  expect_true(exists("x", envir = student_env))
+})
 
-The above block can be executed in EPI Course Page .
-
-### Non-Runnable Code Blocks
-
-Non-runnable code blocks are written without curly braces, using only the language name after the triple backticks:
-
-```markdown
-```python
-# This is a non-runnable code block
-# It is used to display code for reference only.
-
-def greet(name):
-    return f"Hello, {name}"
-```
-
-
-Non-runnable code blocks are purely for display purposes and cannot be executed directly.
-
-## Hints
-
-Hints can be added below any code block using the following format:
-
-```html
-<!-- HINT:
-
-- Provide a list of helpful hints for understanding or solving the problem.
-- Use markdown formatting for emphasis and clarity.
-
--->
-```
-
-### Example
-
-```markdown
-```{python}
-# This code plots data points on a graph.
-import matplotlib.pyplot as plt
-
-plt.scatter(x, y, alpha=0.5)
-plt.show()
+# 2 – Confirm x is of the expected type and value
+test_that("x is a numeric value", {
+  expect_type(student_env$x, "double")
+  expect_equal(student_env$x, 10)  # optional: expected value
+})
 ```
 
 <!-- HINT:
-
-- **`plt.scatter(x, y)`**: Plots points on the graph.
-- **`alpha=0.5`**: Makes the points semi-transparent to reduce overplotting.
-
+x <- 10
 -->
-```
 
-### Guidelines for Hints
-1. Hints should start with **`<!-- HINT:`** and end with **`-->`**.
-2. Use bullet points to list hints.
-3. Use markdown formatting (e.g., **bold**, *italic*, or inline code `like this`) for better readability.
-4. Place hints immediately below the related code block.
+Add noeval code blocks too.
 
 
-## Summary of Conventions
-1. Use **test blocks** (`<!-- TEST_BLOCK_START -->` and `<!-- TEST_BLOCK_END -->`) for test cases.
-2. Use **solution blocks** (`<!-- SOLUTION_BLOCK_START -->` and `<!-- SOLUTION_BLOCK_END -->`) for solutions.
-3. Use **runnable code blocks** (````{python}`) for executable code.
-4. Use **non-runnable code blocks** (````python`) for display-only code.
-5. Add **hints** below relevant code blocks using the `<!-- HINT:` format.
-
-By following these conventions, your markdown files will be well-structured and easy to parse.
