@@ -3,4 +3,6 @@
 export(color_plots)
 export(insert_lesson_yaml_header)
 export(lesson_yaml_header)
+export(insert_initial_code_block)
+export(initial_code_block_template)
 export(new_quarto_lesson_coding)

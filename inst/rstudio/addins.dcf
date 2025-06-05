@@ -7,3 +7,8 @@ Name: Insert Lesson YAML Header
 Description: Insert the standard lesson YAML header into a Quarto file.
 Binding: insert_lesson_yaml_header
 Interactive: false
+
+Name: Insert Initial Code Block
+Description: Insert the standard initial code block template into a Quarto file.
+Binding: insert_initial_code_block
+Interactive: false
