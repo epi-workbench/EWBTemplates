@@ -1,10 +1,10 @@
 # EWBTemplates 0.0.9001
 
 * Add RStudio add-ins for inserting solution, hidden, test, and noeval code blocks.
-* Updated the `insert_initial_code_block()` add-in.
-* Added a Quarto coding lesson template with `new_quarto_lesson_coding()` and a YAML header insert add-in.
-* Added R Markdown table, R script, and R4Epi chapter templates.
-* Updated existing templates such as `no_output` and `r4epi`.
+
+* Add RStudio add-ins for inserting YAML headers to lesson Quarto files.
+
+* Updated the Quarto coding lesson template with `new_quarto_lesson_coding()`.
 
 # EWBTemplates 0.0.9000
 
