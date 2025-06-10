@@ -1,10 +1,12 @@
 # EWBTemplates 0.0.9001
 
-* Add RStudio add-ins for inserting solution, hidden, test, and noeval code blocks.
+* Add RStudio add-ins for inserting YAML headers to EWB lesson files.
 
-* Add RStudio add-ins for inserting YAML headers to lesson Quarto files.
+* Add RStudio add-ins for inserting solution, hidden, test, and noeval code blocks to EWB lesson files.
 
-* Updated the Quarto coding lesson template with `new_quarto_lesson_coding()`.
+* Add RStudio add-ins for inserting code block hints to EWB lesson files.
+
+* Updated the Quarto coding lesson template used by `new_quarto_lesson_coding()`.
 
 # EWBTemplates 0.0.9000
 
