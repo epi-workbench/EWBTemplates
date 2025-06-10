@@ -12,3 +12,23 @@ Name: Insert Initial Code Block
 Description: Insert the standard initial code block template into a Quarto file.
 Binding: insert_initial_code_block
 Interactive: false
+
+Name: Insert Solution Code Block
+Description: Insert the standard solution code block template into a Quarto file.
+Binding: insert_solution_code_block
+Interactive: false
+
+Name: Insert Hidden Code Block
+Description: Insert the standard hidden code block template into a Quarto file.
+Binding: insert_hidden_code_block
+Interactive: false
+
+Name: Insert Test Code Block
+Description: Insert the standard test code block template into a Quarto file.
+Binding: insert_test_code_block
+Interactive: false
+
+Name: Insert No Evaluation Code Block
+Description: Insert the standard no evalution code block template into a Quarto file.
+Binding: insert_noeval_code_block
+Interactive: false
