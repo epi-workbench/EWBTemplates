@@ -13,8 +13,8 @@ initial_code_block_template()
 Invisibly returns the code block text as a single character string.
 }
 \description{
-This add-in inserts the standard "initial" code block template used for
-Epi-Workbench lessons at the current cursor location in RStudio.
+This add-in inserts the standard "initial" code block template
+used for Epi-Workbench lessons at the current cursor location in RStudio.
 }
 \examples{
 if (interactive()) insert_initial_code_block()
