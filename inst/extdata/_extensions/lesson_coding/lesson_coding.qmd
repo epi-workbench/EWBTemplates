@@ -10,7 +10,7 @@ tags:
   - placeholder
 ---
 
-Make changes to the template file at: https://github.com/brad-cannell/templates
+Make changes to the template file at: https://github.com/epi-workbench/EWBTemplates
 
 ```{r, type=initial}
 library(testthat)
