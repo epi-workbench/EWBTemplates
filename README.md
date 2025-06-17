@@ -3,8 +3,6 @@
 
 <!-- README.md is generated from README.qmd. Please edit that file and render using quarto render README.qmd -->
 
-# EWBTemplates
-
 <!-- badges: start -->
 
 <!-- badges: end -->
