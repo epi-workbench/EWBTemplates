@@ -1,19 +1,12 @@
 ---
-output: github_document
+title: "EWBTemplates"
+format: gfm
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+<!-- README.md is generated from README.qmd. Please edit that file and render using quarto render README.qmd -->
 
 ```{r}
+#| echo: false
 library(dplyr, warn.conflicts = FALSE)
 library(ggplot2)
 library(EWBTemplates)
@@ -31,7 +24,8 @@ Templates and themes for Epi-Workbench.
 You can install templates from GitHub with:
 
 ``` r
-devtools::install_github("epi-workbench/EWBTemplates")
+# install.packages("pak")
+pak::pak("epi-workbench/EWBTemplates")
 ```
 
 ## Template files

@@ -1,27 +1,23 @@
+# EWBTemplates
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-``` r
-library(dplyr, warn.conflicts = FALSE)
-library(ggplot2)
-library(EWBTemplates)
-```
+<!-- README.md is generated from README.qmd. Please edit that file and render using quarto render README.qmd -->
 
 # EWBTemplates
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-This repository contains templates and themes for Epi-Workbench course development. It is public facing, but intended primarily for course instructors.
-
-The main [epi-workbench](https://github.com/epi-workbench/epi-workbench) repository contains the [course roadmap](https://github.com/orgs/epi-workbench/projects/5) and other information intended for the general public.
+Templates and themes for Epi-Workbench.
 
 ## Installation
 
 You can install templates from GitHub with:
 
 ``` r
-devtools::install_github("epi-workbench/EWBTemplates")
+# install.packages("pak")
+pak::pak("epi-workbench/EWBTemplates")
 ```
 
 ## Template files
@@ -56,11 +52,23 @@ knitr::kable(ewb_colors)
 ewb_colors |> color_plots("ewb")
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+![](README_files/figure-commonmark/unnamed-chunk-4-1.png)
 
 ## Images
 
 The EWBTemplates package contains several logos and images. They are
 located in `man/figures`. Here is a sample.
 
-<img src="man/figures/ewb_logos/epi_workbench_full_logo_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_full_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_epi_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_epi_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_dark_blue_ewb_logo.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_ewb_on_dark_bg.png" width="100%" /><img src="man/figures/ewb_logos/epi_workbench_epi_favicon.png" width="100%" />
+![](man/figures/ewb_logos/epi_workbench_full_logo_on_dark_bg.png)
+
+![](man/figures/ewb_logos/epi_workbench_dark_blue_full_logo.png)
+
+![](man/figures/ewb_logos/epi_workbench_dark_blue_epi_logo.png)
+
+![](man/figures/ewb_logos/epi_workbench_epi_on_dark_bg.png)
+
+![](man/figures/ewb_logos/epi_workbench_dark_blue_ewb_logo.png)
+
+![](man/figures/ewb_logos/epi_workbench_ewb_on_dark_bg.png)
+
+![](man/figures/ewb_logos/epi_workbench_epi_favicon.png)
