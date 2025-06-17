@@ -8,3 +8,5 @@
 ^data-raw$
 ^EWBTemplates\.Rproj$
 ^news\.md$
+^README\.qmd$
+^README_files$

@@ -1,6 +1,11 @@
 Name: Quarto - Coding Lesson
-Description: Create an EWB coding lesson in a Quarto file from a template.
+Description: Create an EWB coding lesson as a Quarto file from a template.
 Binding: new_quarto_lesson_coding
+Interactive: false
+
+Name: Quarto - Lesson Overview
+Description: Create an EWB course overview template as a Quarto file.
+Binding: new_quarto_course_overview
 Interactive: false
 
 Name: Insert Lesson YAML Header

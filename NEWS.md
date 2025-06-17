@@ -6,7 +6,9 @@
 
 * Add RStudio add-ins for inserting code block hints to EWB lesson files.
 
-* Updated the Quarto coding lesson template used by `new_quarto_lesson_coding()`.
+* Update the Quarto coding lesson template used by `new_quarto_lesson_coding()`.
+
+* Add the Quarto Course Overview template used by `new_quarto_course_overview()`
 
 # EWBTemplates 0.0.9000
 
