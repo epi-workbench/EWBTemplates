@@ -1,3 +1,7 @@
+# EWBTemplates 0.0.9002
+
+* Update the code scaffolding inside of hidden code blocks.
+
 # EWBTemplates 0.0.9001
 
 * Add RStudio add-ins for inserting YAML headers to EWB lesson files.
