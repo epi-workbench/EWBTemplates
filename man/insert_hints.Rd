@@ -19,3 +19,16 @@ used for Epi-Workbench lessons at the current cursor location in RStudio.
 \examples{
 if (interactive()) insert_hints()
 }
+\references{
+For more information on hints see: https://github.com/epi-workbench/EWBTemplates/wiki/Hints
+}
+\seealso{
+Other Insert Addins: 
+\code{\link{insert_hidden_code_block}()},
+\code{\link{insert_initial_code_block}()},
+\code{\link{insert_lesson_yaml_header}()},
+\code{\link{insert_noeval_code_block}()},
+\code{\link{insert_solution_code_block}()},
+\code{\link{insert_test_code_block}()}
+}
+\concept{Insert Addins}

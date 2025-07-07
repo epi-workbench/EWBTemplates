@@ -1,36 +1,78 @@
+# EWBTemplates 0.0.9003
+
+- Update the example hint syntax.
+
+- Update the code scaffolding inside of hidden code blocks.
+  
+  - Change "Tests" to "Code Submission Tests (CSTs)".
+  
+  - Add an example CST to check that `____` was replaced with something.
+  
+- Add the the 'Insert Addins' @family to:
+
+  - insert_hidden_code_block.R
+  
+  - insert_hints.R
+  
+  - insert_initial_code_block.R
+  
+  - insert_lesson_yaml_header.R
+  
+  - insert_noeval_code_block.R
+  
+  - insert_solution_code_block.R
+  
+  - insert_test_code_block.R
+  
+- Add links to GitHub Wiki documentation to:
+
+  - insert_hidden_code_block.R
+  
+  - insert_hints.R
+  
+  - insert_initial_code_block.R
+  
+  - insert_lesson_yaml_header.R
+  
+  - insert_noeval_code_block.R
+  
+  - insert_solution_code_block.R
+  
+  - insert_test_code_block.R
+
 # EWBTemplates 0.0.9002
 
-* Update the code scaffolding inside of hidden code blocks.
+- Update the code scaffolding inside of hidden code blocks.
 
 # EWBTemplates 0.0.9001
 
-* Add RStudio add-ins for inserting YAML headers to EWB lesson files.
+- Add RStudio add-ins for inserting YAML headers to EWB lesson files.
 
-* Add RStudio add-ins for inserting solution, hidden, test, and noeval code blocks to EWB lesson files.
+- Add RStudio add-ins for inserting solution, hidden, test, and noeval code blocks to EWB lesson files.
 
-* Add RStudio add-ins for inserting code block hints to EWB lesson files.
+- Add RStudio add-ins for inserting code block hints to EWB lesson files.
 
-* Update the Quarto coding lesson template used by `new_quarto_lesson_coding()`.
+- Update the Quarto coding lesson template used by `new_quarto_lesson_coding()`.
 
-* Add the Quarto Course Overview template used by `new_quarto_course_overview()`
+- Add the Quarto Course Overview template used by `new_quarto_course_overview()`
 
 # EWBTemplates 0.0.9000
 
-* This is the first committed version of the EWBTemplates package.
+- This is the first committed version of the EWBTemplates package.
 
-* This is a development version of the package and subject to major changes.
+- This is a development version of the package and subject to major changes.
 
-* This version of the the EWBTemplates package will not be made available on
+- This version of the the EWBTemplates package will not be made available on
 CRAN.
 
-* This version contains:
+- This version contains:
 
-  * A table of EWB brand standard colors.
+  - A table of EWB brand standard colors.
 
-  * A collection of EWB brand standard logos.
+  - A collection of EWB brand standard logos.
 
-  * A template for creating EWB coding lessons.
+  - A template for creating EWB coding lessons.
 
-  * A convenience function, `color_plots()`, for visualizing color palettes
+  - A convenience function, `color_plots()`, for visualizing color palettes
   like the EWB brand standard color palette created in the `EWBTemplates`
   package.

@@ -3,6 +3,10 @@
 #' @description This add-in inserts the standard "test" code block template
 #'   used for Epi-Workbench lessons at the current cursor location in RStudio.
 #'
+#' @family Insert Addins
+#'
+#' @references For more information on code blocks see: https://github.com/epi-workbench/EWBTemplates/wiki/Code-Blocks
+#'
 #' @return Invisibly returns the code block text as a single character string.
 #' @export
 #'

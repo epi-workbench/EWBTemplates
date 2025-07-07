@@ -1,6 +1,6 @@
 Package: EWBTemplates
 Title: Epi-Workbench Templates and Themes
-Version: 0.0.9002
+Version: 0.0.9003
 Authors@R: 
     person(given = "Brad",
            family = "Cannell",

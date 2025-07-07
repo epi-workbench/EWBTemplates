@@ -20,3 +20,16 @@ Epi-Workbench lessons at the current cursor location in RStudio.
 \examples{
 if (interactive()) insert_lesson_yaml_header()
 }
+\references{
+For more information on lesson types see: https://github.com/epi-workbench/EWBTemplates/wiki
+}
+\seealso{
+Other Insert Addins: 
+\code{\link{insert_hidden_code_block}()},
+\code{\link{insert_hints}()},
+\code{\link{insert_initial_code_block}()},
+\code{\link{insert_noeval_code_block}()},
+\code{\link{insert_solution_code_block}()},
+\code{\link{insert_test_code_block}()}
+}
+\concept{Insert Addins}

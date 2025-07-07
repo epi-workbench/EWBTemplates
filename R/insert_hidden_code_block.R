@@ -4,6 +4,11 @@
 #'   used for Epi-Workbench lessons at the current cursor location in RStudio.
 #'
 #' @return Invisibly returns the code block text as a single character string.
+#'
+#' @family Insert Addins
+#'
+#' @references For more information on hidden code blocks see: https://github.com/epi-workbench/EWBTemplates/wiki/Code-Blocks
+#'
 #' @export
 #'
 #' @examples
@@ -38,11 +43,26 @@ hidden_code_block_template <- function() {
     "# Gracefully evaluate code (prevents early error from stopping tests)",
     "try(eval(parse(text = student_code), envir = student_env), silent = TRUE)",
     "",
-    "# Tests",
+    "# Code Submission Tests (CSTs)",
     "# -----------------------------------------------------------------------------",
     "",
-    "# 1 - Check ...",
+    "# 1 - Check that `____` was replaced with something",
+    'test_that("Did you replace the blanks in the code block?", {',
+    '  if (grepl("____", student_code, fixed = TRUE)) {',
+    '    fail("It looks like your submission still contains `____`. Please replace `____` to complete the code.")',
+    '  } else {',
+    '    succeed()',
+    '  }',
+    '})',
     "",
+    '# 2 - Check ...',
+    'test_that("Description that will be meaningful to learners...", {',
+    '  if (condition 1) {',
+    '    fail("Meaningful failure message")',
+    '  } else {',
+    '    succeed()',
+    '  }',
+    '})',
     "```",
     sep = "\n"
   )

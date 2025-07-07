@@ -19,3 +19,16 @@ used for Epi-Workbench lessons at the current cursor location in RStudio.
 \examples{
 if (interactive()) insert_noeval_code_block()
 }
+\references{
+For more information on code blocks see: https://github.com/epi-workbench/EWBTemplates/wiki/Code-Blocks
+}
+\seealso{
+Other Insert Addins: 
+\code{\link{insert_hidden_code_block}()},
+\code{\link{insert_hints}()},
+\code{\link{insert_initial_code_block}()},
+\code{\link{insert_lesson_yaml_header}()},
+\code{\link{insert_solution_code_block}()},
+\code{\link{insert_test_code_block}()}
+}
+\concept{Insert Addins}
