@@ -2,27 +2,50 @@
 % Please edit documentation in R/insert_hidden_code_block.R
 \name{insert_hidden_code_block}
 \alias{insert_hidden_code_block}
-\alias{hidden_code_block_template}
 \title{Insert an Hidden Code Block into a Quarto Lesson}
 \usage{
 insert_hidden_code_block()
-
-hidden_code_block_template()
 }
 \value{
-Invisibly returns the code block text as a single character string.
+Invisibly returns the inserted template text.
 }
 \description{
-This add-in inserts the standard "hidden" code block template
-used for Epi-Workbench lessons at the current cursor location in RStudio.
+Launches an RStudio Addin that interactively inserts a hidden code block
+template into the active Quarto lesson at the current cursor location.
+
+This tool supports multiple predefined templates for Code Submission Tests
+(CSTs), including:
+\itemize{
+\item \code{"default"}. General-purpose CSTs with guidance for customization.
+\item \code{"no_mod"}: CSTs for unmodified scaffolded code blocks. These should only
+be used when:
+\itemize{
+\item The exercise code block includes clear, minimal code that does not need
+to be modified by the learner.
+\item The instructions explicitly tell the learner to submit the code
+without making any changes.
+\item The scaffolded code is written carefully to match the CST exactly.
 }
+\item \code{"load_package"}: CSTs that check whether packages are loaded correctly
+using \code{library()}.
+}
+
+The inserted hidden block includes simulated submissions, CST scaffolding,
+and a reminder to structure tests clearly and meaningfully.
+
+\strong{Note:} This Addin must be run inside the RStudio IDE.
+}
+\section{Usage}{
+
+Run interactively via the RStudio Addins menu or call \code{insert_hidden_code_block()} in the console.
+}
+
 \examples{
-if (interactive()) insert_hidden_code_block()
-}
-\references{
-For more information on hidden code blocks see: https://github.com/epi-workbench/EWBTemplates/wiki/Code-Blocks
+if (interactive()) insert_hints()
 }
 \seealso{
+\href{https://github.com/epi-workbench/EWBTemplates/wiki/Writing-CSTs}{Writing CSTs wiki page}
+
 Other Insert Addins: 
 \code{\link{insert_hints}()},
 \code{\link{insert_initial_code_block}()},

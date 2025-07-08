@@ -1,6 +1,6 @@
 Package: EWBTemplates
 Title: Epi-Workbench Templates and Themes
-Version: 0.0.9003
+Version: 0.0.9004
 Authors@R: 
     person(given = "Brad",
            family = "Cannell",
@@ -24,5 +24,7 @@ Depends:
 Imports: 
     dplyr,
     ggplot2,
-    here
+    here,
+    miniUI,
+    shiny
 Config/testthat/edition: 3

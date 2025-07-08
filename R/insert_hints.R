@@ -1,28 +1,107 @@
 #' Insert Code Block Hints into a Quarto Lesson
 #'
-#' @description This add-in inserts the standard code block hint template
-#'   used for Epi-Workbench lessons at the current cursor location in RStudio.
+#' @description
+#' Launches an RStudio Addin that interactively inserts a templated hint text
+#' code block into the active Quarto lesson at the current cursor location.
+#'
+#' This tool supports multiple predefined hint templates, including:
+#'
+#' - "default". The default hint template. This template includes general guidance for writing hints.
+#'
+#' - "no_mod". A hint template for code blocks that are intended to be run without modification.
+#'
+#' **Note:** This Addin must be run inside the RStudio IDE.
+#'
+#' @section Usage:
+#' Run interactively via the RStudio Addins menu or call `insert_hints()` in the console.
+#'
+#' @seealso
+#' [Hints wiki page](https://github.com/epi-workbench/EWBTemplates/wiki/Hints)
 #'
 #' @family Insert Addins
-#'
-#' @references For more information on hints see: https://github.com/epi-workbench/EWBTemplates/wiki/Hints
-#'
-#' @return Invisibly returns the code block hint text as a single character string.
-#' @export
+#' @return Invisibly returns the inserted hint template text.
 #'
 #' @examples
 #' if (interactive()) insert_hints()
 insert_hints <- function() {
-  block <- hints_template()
-  if (rstudioapi::isAvailable()) {
-    rstudioapi::insertText(text = block)
+
+  # Ensure the RStudio API is available (needed to insert text into editor)
+  if (!rstudioapi::isAvailable()) {
+    stop("This Addin must be run within RStudio.")
   }
-  invisible(block)
+
+  # ----------------------------------------------------------------------------
+  # UI DEFINITION
+  # ----------------------------------------------------------------------------
+  # Use miniUI to create a compact gadget interface that displays inside RStudio.
+  # The gadget includes:
+  # - A title bar with "Done" and "Cancel" buttons
+  # - A set of radio buttons allowing the user to choose a hint template
+  ui <- miniUI::miniPage(
+    miniUI::gadgetTitleBar("Insert Hint Template"),
+    miniUI::miniContentPanel(
+      shiny::radioButtons(
+        inputId = "template_choice",
+        label = "Select a Hint Template:",
+        choices = c(
+          "Default Hint (with guidance)" = "default",
+          "No Modification (hints for unmodified code blocks)" = "no_mod"
+        ),
+        selected = "default"
+      )
+    )
+  )
+
+  # ----------------------------------------------------------------------------
+  # SERVER LOGIC
+  # ----------------------------------------------------------------------------
+  # This defines how the gadget responds to user input
+  server <- function(input, output, session) {
+
+    # When the user clicks the "Done" button:
+    shiny::observeEvent(input$done, {
+
+      # Select the appropriate template text based on user choice
+      hint_text <- switch(
+        input$template_choice,
+        "default" = hints_template_default(),
+        "no_mod" = hints_template_no_mod()
+      )
+
+      # Insert the selected template text at the current cursor location
+      rstudioapi::insertText(text = hint_text)
+
+      # Close the gadget
+      shiny::stopApp()
+    })
+
+    # If the user clicks "Cancel", close the gadget without doing anything
+    shiny::observeEvent(input$cancel, {
+      shiny::stopApp()
+    })
+  }
+
+  # ----------------------------------------------------------------------------
+  # LAUNCH THE GADGET
+  # ----------------------------------------------------------------------------
+  # Use dialogViewer() to open the UI as a native RStudio pop-up (rather than browser tab)
+  viewer <- shiny::dialogViewer("Insert Hint Template", width = 400, height = 300)
+
+  # Run the gadget (UI + server) using the defined viewer
+  shiny::runGadget(ui, server, viewer = viewer)
 }
 
-#' @rdname insert_hints
-#' @export
-hints_template <- function() {
+# =============================================================================
+# Hint Templates
+# - Create new template options below.
+# - Add the new template option to the server logic above. Inside the switch()
+#   function.
+# - Document the new template option under "@description" above.
+# - Create a unit test in test-insert_hints.R.
+# =============================================================================
+
+## Default Hint Template
+hints_template_default <- function() {
   paste(
     "<!-- HINT:",
     "[TITLE=Writing Hints, POINTS=25]",
@@ -50,6 +129,19 @@ hints_template <- function() {
     '```',
     '- x <- "hint"',
     '```',
+    "-->",
+    sep = "\n"
+  )
+}
+
+## Hint Template for Code Blocks Intended to be Run Without Modification
+hints_template_no_mod <- function() {
+  paste(
+    "<!-- HINT:",
+    "[POINTS=0]",
+    "- This code block already contains the correct code. Please submit it without making any changes.",
+    "- If you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version.",
+    "- Want to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.",
     "-->",
     sep = "\n"
   )

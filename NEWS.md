@@ -1,3 +1,11 @@
+# EWBTemplates 0.0.9004
+
+- The `insert_hints()` function now has the ability to insert multiple different hint templates via the `templates` argument.
+
+- Made the `insert_hints()` Addin interactive using `shiny::miniUI` and `rstudioapi::dialogViewer()`, allowing users to select a hint template from a dropdown menu within RStudio.
+
+- Updated `insert_hidden_code_block()` RStudio Addin to interactively insert templated CST code blocks into Quarto lessons. Includes support for "default", "no_mod", and "load_package" templates.
+
 # EWBTemplates 0.0.9003
 
 - Update the example hint syntax.

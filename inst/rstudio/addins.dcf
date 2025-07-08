@@ -36,7 +36,7 @@ Interactive: false
 Name: Insert Hints
 Description: Insert the standard code block hint template into a Quarto file.
 Binding: insert_hints
-Interactive: false
+Interactive: true
 
 Name: Insert No Evaluation Code Block
 Description: Insert the standard no evalution code block template into a Quarto file.

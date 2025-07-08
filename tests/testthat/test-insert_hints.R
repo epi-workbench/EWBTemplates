@@ -2,7 +2,10 @@
 # Unit tests for the hints_template() function.
 # ===========================================================================
 
-expected_block <- paste(
+# Default Hint Template
+# ---------------------------------------------------------------------------
+
+expected_text <- paste(
   "<!-- HINT:",
   "[TITLE=Writing Hints, POINTS=25]",
   "- Hints provide supportive nudges that guide learners toward the solution without giving away the answer.",
@@ -33,6 +36,23 @@ expected_block <- paste(
   sep = "\n"
 )
 
-test_that("hints_template() returns expected text", {
-  expect_equal(hints_template(), expected_block)
+test_that("hints_template_default() returns the expected text", {
+  expect_equal(hints_template_default(), expected_text)
+})
+
+# Hint Template for Code Blocks Intended to be Run Without Modification
+# ---------------------------------------------------------------------------
+
+expected_text <- paste(
+  "<!-- HINT:",
+  "[POINTS=0]",
+  "- This code block already contains the correct code. Please submit it without making any changes.",
+  "- If you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version.",
+  "- Want to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.",
+  "-->",
+  sep = "\n"
+)
+
+test_that("hints_template_default() returns the expected text", {
+  expect_equal(hints_template_no_mod(), expected_text)
 })

@@ -1,60 +1,194 @@
 #' Insert an Hidden Code Block into a Quarto Lesson
 #'
-#' @description This add-in inserts the standard "hidden" code block template
-#'   used for Epi-Workbench lessons at the current cursor location in RStudio.
+#' @description
+#' Launches an RStudio Addin that interactively inserts a hidden code block
+#' template into the active Quarto lesson at the current cursor location.
 #'
-#' @return Invisibly returns the code block text as a single character string.
+#' This tool supports multiple predefined templates for Code Submission Tests
+#' (CSTs), including:
+#'
+#' - `"default"`. General-purpose CSTs with guidance for customization.
+#'
+#' - `"no_mod"`: CSTs for unmodified scaffolded code blocks. These should only
+#'   be used when:
+#'     - The exercise code block includes clear, minimal code that does not need
+#'       to be modified by the learner.
+#'     - The instructions explicitly tell the learner to submit the code
+#'       without making any changes.
+#'     - The scaffolded code is written carefully to match the CST exactly.
+#'
+#' - `"load_package"`: CSTs that check whether packages are loaded correctly
+#'   using `library()`.
+#'
+#' The inserted hidden block includes simulated submissions, CST scaffolding,
+#' and a reminder to structure tests clearly and meaningfully.
+#'
+#' **Note:** This Addin must be run inside the RStudio IDE.
+#'
+#' @section Usage:
+#' Run interactively via the RStudio Addins menu or call `insert_hidden_code_block()` in the console.
+#'
+#' @seealso
+#' [Writing CSTs wiki page](https://github.com/epi-workbench/EWBTemplates/wiki/Writing-CSTs)
 #'
 #' @family Insert Addins
-#'
-#' @references For more information on hidden code blocks see: https://github.com/epi-workbench/EWBTemplates/wiki/Code-Blocks
-#'
+#' @return Invisibly returns the inserted template text.
 #' @export
 #'
 #' @examples
-#' if (interactive()) insert_hidden_code_block()
+#' if (interactive()) insert_hints()
 insert_hidden_code_block <- function() {
-  block <- hidden_code_block_template()
-  if (rstudioapi::isAvailable()) {
-    rstudioapi::insertText(text = block)
+
+  # Ensure the RStudio API is available (needed to insert text into editor)
+  if (!rstudioapi::isAvailable()) {
+    stop("This Addin must be run within RStudio.")
   }
-  invisible(block)
+
+  # ----------------------------------------------------------------------------
+  # UI DEFINITION
+  # ----------------------------------------------------------------------------
+  # Use miniUI to create a compact gadget interface that displays inside RStudio.
+  # The gadget includes:
+  # - A title bar with "Done" and "Cancel" buttons
+  # - A set of radio buttons allowing the user to choose a code block template
+  ui <- miniUI::miniPage(
+    miniUI::gadgetTitleBar("Insert Hidden Code Block Template"),
+    miniUI::miniContentPanel(
+      shiny::radioButtons(
+        inputId = "template_choice",
+        label = "Select a Template:",
+        choices = c(
+          "Default (with guidance)" = "default",
+          "No Modification (CSTs for unmodified code blocks)" = "no_mod",
+          "Load Package (CSTs for loading packages with `library()`)" = "load_package"
+        ),
+        selected = "default"
+      )
+    )
+  )
+
+  # ----------------------------------------------------------------------------
+  # SERVER LOGIC
+  # ----------------------------------------------------------------------------
+  # This defines how the gadget responds to user input
+  server <- function(input, output, session) {
+
+    # When the user clicks the "Done" button:
+    shiny::observeEvent(input$done, {
+
+      # Select the appropriate template text based on user choice
+      hint_text <- switch(
+        input$template_choice,
+        "default" = hidden_code_block_default(),
+        "no_mod" = hidden_code_block_no_mod(),
+        "load_package" = hidden_code_block_load_package()
+      )
+
+      # Insert the selected template text at the current cursor location
+      rstudioapi::insertText(text = hint_text)
+
+      # Close the gadget
+      shiny::stopApp()
+    })
+
+    # If the user clicks "Cancel", close the gadget without doing anything
+    shiny::observeEvent(input$cancel, {
+      shiny::stopApp()
+    })
+  }
+
+  # ----------------------------------------------------------------------------
+  # LAUNCH THE GADGET
+  # ----------------------------------------------------------------------------
+  # Use dialogViewer() to open the UI as a native RStudio pop-up (rather than browser tab)
+  viewer <- shiny::dialogViewer("Insert Hint Template", width = 600, height = 300)
+
+  # Run the gadget (UI + server) using the defined viewer
+  shiny::runGadget(ui, server, viewer = viewer)
 }
 
-#' @rdname insert_hidden_code_block
-#' @export
-hidden_code_block_template <- function() {
+# =============================================================================
+# Reusable Code Block Text Chunks
+# Many of the code block templates below have large chunks of text in common.
+# We will extract that text out into reusable chunks in this section to:
+# 1. Make the templates below easier to read.
+# 2. Make the templates below easier to maintain.
+# 3. Allows us to more easily see the differences between the templates.
+#
+# These don't need to be documented in @description, because they aren't
+# exposed to users and they aren't intended to be used on their own.
+# =============================================================================
+
+hidden_cb_begin <- paste(
+  "```{r, type=hide}",
+  "# Hidden Block for Local Testing Only",
+  "# -----------------------------------------------------------------------------",
+  "",
+  sep = "\n"
+)
+
+setup_student_environment <- paste(
+  "# Setup the simulated student environment",
+  "student_env <- new.env()",
+  "rm(list = ls(envir = student_env), envir = student_env)",
+  "",
+  sep = "\n"
+)
+
+set_active_submission <- paste(
+  "# Set the active submission",
+  "student_code <- correct",
+  "",
+  sep = "\n"
+)
+
+evaluate_student_submission <- paste(
+  "# Gracefully evaluate code (prevents early error from stopping tests)",
+  "try(eval(parse(text = student_code), envir = student_env), silent = TRUE)",
+  "",
+  sep = "\n"
+)
+
+hidden_cb_end <- "```"
+
+start_csts <- paste(
+  "# Code Submission Tests (CSTs)",
+  "# -----------------------------------------------------------------------------",
+  "",
+  "# 1 - Check that `____` was replaced with something",
+  'test_that("Did you replace the blanks in the code block?", {',
+  '  if (grepl("____", student_code, fixed = TRUE)) {',
+  '    fail("It looks like your submission still contains `____`. Please replace `____` to complete the code.")',
+  '  } else {',
+  '    succeed()',
+  '  }',
+  '})',
+  "",
+  sep = "\n"
+)
+
+# =============================================================================
+# Code Block Templates
+# - Create new template options below.
+# - Add the new template option to the server logic above. Inside the switch()
+#   function.
+# - Document the new template option under "@description" above.
+# - Create a unit test in test-insert_hidden_code_block.R.
+# =============================================================================
+
+# Default Template
+# ---------------------------------------------------------------------------
+hidden_code_block_default <- function() {
   paste(
-    "```{r, type=hide}",
-    "# Hidden Block for Local Testing Only",
-    "# -----------------------------------------------------------------------------",
-    "",
-    "# Setup the simulated student environment",
-    "student_env <- new.env()",
-    "rm(list = ls(envir = student_env), envir = student_env)",
-    "",
+    hidden_cb_begin,
+    setup_student_environment,
     "# Simulated student submissions",
     "correct <- '[INSERT]'",
     "wrong_1 <- '[INSERT]'",
     "",
-    "# Set the active submission",
-    "student_code <- correct",
-    "",
-    "# Gracefully evaluate code (prevents early error from stopping tests)",
-    "try(eval(parse(text = student_code), envir = student_env), silent = TRUE)",
-    "",
-    "# Code Submission Tests (CSTs)",
-    "# -----------------------------------------------------------------------------",
-    "",
-    "# 1 - Check that `____` was replaced with something",
-    'test_that("Did you replace the blanks in the code block?", {',
-    '  if (grepl("____", student_code, fixed = TRUE)) {',
-    '    fail("It looks like your submission still contains `____`. Please replace `____` to complete the code.")',
-    '  } else {',
-    '    succeed()',
-    '  }',
-    '})',
-    "",
+    set_active_submission,
+    evaluate_student_submission,
+    start_csts,
     '# 2 - Check ...',
     'test_that("Description that will be meaningful to learners...", {',
     '  if (condition 1) {',
@@ -63,7 +197,72 @@ hidden_code_block_template <- function() {
     '    succeed()',
     '  }',
     '})',
-    "```",
+    hidden_cb_end,
+    sep = "\n"
+  )
+}
+
+# Template for Code Blocks Intended to be Run Without Modification
+# ---------------------------------------------------------------------------
+hidden_code_block_no_mod <- function() {
+  paste(
+    hidden_cb_begin,
+    setup_student_environment,
+    "# Simulated student submissions",
+    "correct <- 'print(df)'",
+    "wrong_print <- 'Print(df)'",
+    "wrong_function <- 'View(df)'",
+    "wrong_data <- 'print(mtcars)'",
+    "wrong_no_print <- 'df'",
+    "",
+    set_active_submission,
+    evaluate_student_submission,
+    start_csts,
+    '# 2 - Check to make sure the code is submitted without modification',
+    '# Since the student is only expected to click submit and not modify the',
+    '# scaffolded code, a single exact match test is sufficient.',
+    'test_that("Submit `library(dplyr)` exactly", {',
+    '  if (trimws(student_code) != "library(dplyr)") {',
+    '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
+    '  } else {',
+    '    succeed()',
+    '  }',
+    '})',
+    hidden_cb_end,
+    sep = "\n"
+  )
+}
+
+# Template for Code Blocks For Loading Packages
+# ---------------------------------------------------------------------------
+hidden_code_block_load_package <- function() {
+  paste(
+    hidden_cb_begin,
+    setup_student_environment,
+    "# Simulated student submissions",
+    "correct <- 'print(df)'",
+    "wrong_print <- 'Print(df)'",
+    "wrong_function <- 'View(df)'",
+    "wrong_data <- 'print(mtcars)'",
+    "wrong_no_print <- 'df'",
+    "",
+    set_active_submission,
+    evaluate_student_submission,
+    start_csts,
+    "# 2 - Check that dplyr was loaded",
+    "# Calling `library(dplyr)` loads the package into the namespace of the R session,",
+    "# not into a specific environment like `student_env`. So checking `student_env`",
+    "# directly for loaded packages won't work the way checking for an object would.",
+    "# However, if the student correctly submits `library(dplyr)`, it will be loaded",
+    "# into the session, and we can check for that using the CST below.",
+    "test_that(\"Did you load `dplyr`?\", {",
+    "  if (!(\"dplyr\" %in% tolower((.packages())))) {",
+    "    fail(\"Did you load the `dplyr` package correctly? Just replace `____` with `dplyr` - no need to change anything else.\")",
+    "  } else {",
+    "    succeed()",
+    "  }",
+    "})",
+    hidden_cb_end,
     sep = "\n"
   )
 }

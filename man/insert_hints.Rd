@@ -2,27 +2,36 @@
 % Please edit documentation in R/insert_hints.R
 \name{insert_hints}
 \alias{insert_hints}
-\alias{hints_template}
 \title{Insert Code Block Hints into a Quarto Lesson}
 \usage{
 insert_hints()
-
-hints_template()
 }
 \value{
-Invisibly returns the code block hint text as a single character string.
+Invisibly returns the inserted hint template text.
 }
 \description{
-This add-in inserts the standard code block hint template
-used for Epi-Workbench lessons at the current cursor location in RStudio.
+Launches an RStudio Addin that interactively inserts a templated hint text
+code block into the active Quarto lesson at the current cursor location.
+
+This tool supports multiple predefined hint templates, including:
+\itemize{
+\item "default". The default hint template. This template includes general guidance for writing hints.
+\item "no_mod". A hint template for code blocks that are intended to be run without modification.
 }
+
+\strong{Note:} This Addin must be run inside the RStudio IDE.
+}
+\section{Usage}{
+
+Run interactively via the RStudio Addins menu or call \code{insert_hints()} in the console.
+}
+
 \examples{
 if (interactive()) insert_hints()
 }
-\references{
-For more information on hints see: https://github.com/epi-workbench/EWBTemplates/wiki/Hints
-}
 \seealso{
+\href{https://github.com/epi-workbench/EWBTemplates/wiki/Hints}{Hints wiki page}
+
 Other Insert Addins: 
 \code{\link{insert_hidden_code_block}()},
 \code{\link{insert_initial_code_block}()},

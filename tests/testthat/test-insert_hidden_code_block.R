@@ -2,25 +2,51 @@
 # Unit tests for the hidden_code_block_template() function.
 # ===========================================================================
 
-expected_block <- paste(
+
+# =============================================================================
+# Reusable Code Block Text Chunks
+# Many of the code block templates below have large chunks of text in common.
+# We will extract that text out into reusable chunks in this section to:
+# 1. Make the templates below easier to read.
+# 2. Make the templates below easier to maintain.
+#
+# These don't need to be documented in @description, because they aren't
+# exposed to users and they aren't intended to be used on their own.
+# =============================================================================
+
+hidden_cb_begin <- paste(
   "```{r, type=hide}",
   "# Hidden Block for Local Testing Only",
   "# -----------------------------------------------------------------------------",
   "",
+  sep = "\n"
+)
+
+setup_student_environment <- paste(
   "# Setup the simulated student environment",
   "student_env <- new.env()",
   "rm(list = ls(envir = student_env), envir = student_env)",
   "",
-  "# Simulated student submissions",
-  "correct <- '[INSERT]'",
-  "wrong_1 <- '[INSERT]'",
-  "",
+  sep = "\n"
+)
+
+set_active_submission <- paste(
   "# Set the active submission",
   "student_code <- correct",
   "",
+  sep = "\n"
+)
+
+evaluate_student_submission <- paste(
   "# Gracefully evaluate code (prevents early error from stopping tests)",
   "try(eval(parse(text = student_code), envir = student_env), silent = TRUE)",
   "",
+  sep = "\n"
+)
+
+hidden_cb_end <- "```"
+
+start_csts <- paste(
   "# Code Submission Tests (CSTs)",
   "# -----------------------------------------------------------------------------",
   "",
@@ -33,6 +59,26 @@ expected_block <- paste(
   '  }',
   '})',
   "",
+  sep = "\n"
+)
+
+# =============================================================================
+# Code Block Templates
+# =============================================================================
+
+# Default Template
+# ---------------------------------------------------------------------------
+
+expected_block <- paste(
+  hidden_cb_begin,
+  setup_student_environment,
+  "# Simulated student submissions",
+  "correct <- '[INSERT]'",
+  "wrong_1 <- '[INSERT]'",
+  "",
+  set_active_submission,
+  evaluate_student_submission,
+  start_csts,
   '# 2 - Check ...',
   'test_that("Description that will be meaningful to learners...", {',
   '  if (condition 1) {',
@@ -41,10 +87,81 @@ expected_block <- paste(
   '    succeed()',
   '  }',
   '})',
-  "```",
+  hidden_cb_end,
   sep = "\n"
 )
 
-test_that("hidden_code_block_template() returns expected text", {
-  expect_equal(hidden_code_block_template(), expected_block)
+test_that("hidden_code_block_default() returns expected text", {
+  expect_equal(hidden_code_block_default(), expected_block)
+})
+
+# Template for Code Blocks Intended to be Run Without Modification
+# ---------------------------------------------------------------------------
+
+expected_block <- paste(
+  hidden_cb_begin,
+  setup_student_environment,
+  "# Simulated student submissions",
+  "correct <- 'print(df)'",
+  "wrong_print <- 'Print(df)'",
+  "wrong_function <- 'View(df)'",
+  "wrong_data <- 'print(mtcars)'",
+  "wrong_no_print <- 'df'",
+  "",
+  set_active_submission,
+  evaluate_student_submission,
+  start_csts,
+  '# 2 - Check to make sure the code is submitted without modification',
+  '# Since the student is only expected to click submit and not modify the',
+  '# scaffolded code, a single exact match test is sufficient.',
+  'test_that("Submit `library(dplyr)` exactly", {',
+  '  if (trimws(student_code) != "library(dplyr)") {',
+  '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
+  '  } else {',
+  '    succeed()',
+  '  }',
+  '})',
+  hidden_cb_end,
+  sep = "\n"
+)
+
+test_that("hidden_code_block_no_mod() returns expected text", {
+  expect_equal(hidden_code_block_no_mod(), expected_block)
+})
+
+# Template for Code Blocks For Loading Packages
+# ---------------------------------------------------------------------------
+
+expected_block <- paste(
+  hidden_cb_begin,
+  setup_student_environment,
+  "# Simulated student submissions",
+  "correct <- 'print(df)'",
+  "wrong_print <- 'Print(df)'",
+  "wrong_function <- 'View(df)'",
+  "wrong_data <- 'print(mtcars)'",
+  "wrong_no_print <- 'df'",
+  "",
+  set_active_submission,
+  evaluate_student_submission,
+  start_csts,
+  "# 2 - Check that dplyr was loaded",
+  "# Calling `library(dplyr)` loads the package into the namespace of the R session,",
+  "# not into a specific environment like `student_env`. So checking `student_env`",
+  "# directly for loaded packages won't work the way checking for an object would.",
+  "# However, if the student correctly submits `library(dplyr)`, it will be loaded",
+  "# into the session, and we can check for that using the CST below.",
+  "test_that(\"Did you load `dplyr`?\", {",
+  "  if (!(\"dplyr\" %in% tolower((.packages())))) {",
+  "    fail(\"Did you load the `dplyr` package correctly? Just replace `____` with `dplyr` - no need to change anything else.\")",
+  "  } else {",
+  "    succeed()",
+  "  }",
+  "})",
+  hidden_cb_end,
+  sep = "\n"
+)
+
+test_that("hidden_code_block_load_package() returns expected text", {
+  expect_equal(hidden_code_block_load_package(), expected_block)
 })
