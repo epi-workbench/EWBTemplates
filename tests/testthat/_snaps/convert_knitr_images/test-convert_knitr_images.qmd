@@ -11,7 +11,7 @@ This document contains examples of R code blocks that use `knitr::include_graphi
 
 The following code block uses `knitr::include_graphics()` to render an image. When processed by the function, it will be replaced with markdown image syntax.
 
-![my_image.png](Replace with link)
+![my_image.png](Replace_with_link)
 
 ## Example: Code Block That Should Not Be Converted
 

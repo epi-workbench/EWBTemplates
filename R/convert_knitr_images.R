@@ -49,7 +49,7 @@ convert_knitr_images <- function(input_file, output_file = NULL) {
 
           for (match in replacement_lines) {
             image_file <- sub('.*\\(("|\')([^"\']+)("|\')\\).*', '\\2', match)
-            image_md <- sprintf("![%s](Replace with link)", image_file)
+            image_md <- sprintf("![%s](Replace_with_link)", image_file)
             output_lines <- c(output_lines, image_md)
           }
         } else {
