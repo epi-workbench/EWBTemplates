@@ -11,6 +11,7 @@
 # First store the output of new_quarto_course_overview() as a tempfile.
 # See https://testthat.r-lib.org/reference/expect_snapshot_file.html
 test_that("The new_quarto_course_overview() function creates the expected Quarto file", {
+  local_edition(3)  # Use snapshot testing edition 3 for this test
   temp_file <- tempfile()
   file_nm <- basename(temp_file)
   temp_dir <- dirname(temp_file)

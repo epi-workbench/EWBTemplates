@@ -1,3 +1,7 @@
+# EWBTemplates 0.0.9005
+
+- Added `convert_knitr_images()` function to convert R code blocks using `knitr::include_graphics()` into standard markdown image syntax (e.g., `![filename](link)`) for easier portability and readability in Quarto and markdown documents.
+
 # EWBTemplates 0.0.9004
 
 - The `insert_hints()` function now has the ability to insert multiple different hint templates via the `templates` argument.
