@@ -1,3 +1,11 @@
+# EWBTemplates 0.0.9006
+
+- Update the `insert_hidden_code_block()` function.
+
+  - Fix typos in the hidden code block for loading packages template. The previous simulated student submissions didn't apply to loading packages.
+  
+  - Add code for detaching packages during interactive testing to the hidden code block for loading packages template.
+
 # EWBTemplates 0.0.9005
 
 - Added `convert_knitr_images()` function to convert R code blocks using `knitr::include_graphics()` into standard markdown image syntax (e.g., `![filename](link)`) for easier portability and readability in Quarto and markdown documents.
