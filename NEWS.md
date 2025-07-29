@@ -2,6 +2,8 @@
 
 - Update the `insert_hidden_code_block()` function.
 
+  - Remove the CST from the "no modification"" hidden code block template that checks for unmodified partial code scaffolding (`____`). This CST was unnecessary because no modification code blocks contain the complete solution by definition.
+  
   - Replace all references to "student" with "learner".
   
   - we prefer **"learner"** over **"student"** or **"member"**:
