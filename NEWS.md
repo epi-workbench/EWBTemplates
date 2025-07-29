@@ -4,6 +4,8 @@
 
   - Remove the CST from the "no modification"" hidden code block template that checks for unmodified partial code scaffolding (`____`). This CST was unnecessary because no modification code blocks contain the complete solution by definition.
   
+  - Remove example incorrect simulated learner responses from the "no modification" hidden code block template. Since any deviation from the provided code should already trigger the CST, explicit checks for specific incorrect responses are unnecessary. The template only needs to verify that the correct code passes.
+  
   - Replace all references to "student" with "learner".
   
   - we prefer **"learner"** over **"student"** or **"member"**:
