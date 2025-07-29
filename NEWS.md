@@ -1,3 +1,15 @@
+# EWBTemplates 0.0.9007
+
+- Update the `insert_hidden_code_block()` function.
+
+  - Replace all references to "student" with "learner".
+  
+  - we prefer **"learner"** over **"student"** or **"member"**:
+  
+    - The term "learner" is inclusive and reflects the diverse audience of Epi-Workbench, which includes health professionals and the general public.
+    - Unlike "student," it does not imply a formal school setting, grading, or enrollment.
+    - Unlike "member," it conveys an active process of gaining knowledge rather than a passive association with a group.
+
 # EWBTemplates 0.0.9006
 
 - Update the `insert_hidden_code_block()` function.

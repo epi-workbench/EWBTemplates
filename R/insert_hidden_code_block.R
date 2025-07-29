@@ -127,24 +127,24 @@ hidden_cb_begin <- paste(
   sep = "\n"
 )
 
-setup_student_environment <- paste(
-  "# Setup the simulated student environment",
-  "student_env <- new.env()",
-  "rm(list = ls(envir = student_env), envir = student_env)",
+setup_learner_environment <- paste(
+  "# Setup the simulated learner environment",
+  "learner_env <- new.env()",
+  "rm(list = ls(envir = learner_env), envir = learner_env)",
   "",
   sep = "\n"
 )
 
 set_active_submission <- paste(
   "# Set the active submission",
-  "student_code <- correct",
+  "learner_code <- correct",
   "",
   sep = "\n"
 )
 
-evaluate_student_submission <- paste(
+evaluate_learner_submission <- paste(
   "# Gracefully evaluate code (prevents early error from stopping tests)",
-  "try(eval(parse(text = student_code), envir = student_env), silent = TRUE)",
+  "try(eval(parse(text = learner_code), envir = learner_env), silent = TRUE)",
   "",
   sep = "\n"
 )
@@ -155,7 +155,7 @@ start_csts <- paste(
   "",
   "# 1 - Check that `____` was replaced with something",
   'test_that("Did you replace the blanks in the code block?", {',
-  '  if (grepl("____", student_code, fixed = TRUE)) {',
+  '  if (grepl("____", learner_code, fixed = TRUE)) {',
   '    fail("It looks like your submission still contains `____`. Please replace `____` to complete the code.")',
   '  } else {',
   '    succeed()',
@@ -181,13 +181,13 @@ hidden_cb_end <- "```"
 hidden_code_block_default <- function() {
   paste(
     hidden_cb_begin,
-    setup_student_environment,
-    "# Simulated student submissions",
+    setup_learner_environment,
+    "# Simulated learner submissions",
     "correct <- '[INSERT]'",
     "wrong_1 <- '[INSERT]'",
     "",
     set_active_submission,
-    evaluate_student_submission,
+    evaluate_learner_submission,
     start_csts,
     '# 2 - Check ...',
     'test_that("Description that will be meaningful to learners...", {',
@@ -207,8 +207,8 @@ hidden_code_block_default <- function() {
 hidden_code_block_no_mod <- function() {
   paste(
     hidden_cb_begin,
-    setup_student_environment,
-    "# Simulated student submissions",
+    setup_learner_environment,
+    "# Simulated learner submissions",
     "correct <- 'library(dplyr, warn.conflicts = FALSE)'",
     "correct_without_warn_conflicts <- 'library(dplyr)'",
     "correct_quoted_pkg <- 'library(\"dplyr\")'",
@@ -218,13 +218,13 @@ hidden_code_block_no_mod <- function() {
     "wrong_require <- 'require(dplyr)' # Not best practice, but it works",
     "",
     set_active_submission,
-    evaluate_student_submission,
+    evaluate_learner_submission,
     start_csts,
     '# 2 - Check to make sure the code is submitted without modification',
-    '# Since the student is only expected to click submit and not modify the',
+    '# Since the learner is only expected to click submit and not modify the',
     '# scaffolded code, a single exact match test is sufficient.',
     'test_that("Submit `library(dplyr)` exactly", {',
-    '  if (trimws(student_code) != "library(dplyr)") {',
+    '  if (trimws(learner_code) != "library(dplyr)") {',
     '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
     '  } else {',
     '    succeed()',
@@ -240,8 +240,8 @@ hidden_code_block_no_mod <- function() {
 hidden_code_block_load_package <- function() {
   paste(
     hidden_cb_begin,
-    setup_student_environment,
-    "# Simulated student submissions",
+    setup_learner_environment,
+    "# Simulated learner submissions",
     "correct <- 'library(dplyr, warn.conflicts = FALSE)'",
     "correct_without_warn_conflicts <- 'library(dplyr)'",
     "correct_quoted_pkg <- 'library(\"dplyr\")'",
@@ -254,13 +254,13 @@ hidden_code_block_load_package <- function() {
     "# detach(\"package:dplyr\", unload = TRUE)",
     "",
     set_active_submission,
-    evaluate_student_submission,
+    evaluate_learner_submission,
     start_csts,
     "# 2 - Check that dplyr was loaded",
     "# Calling `library(dplyr)` loads the package into the namespace of the R session,",
-    "# not into a specific environment like `student_env`. So checking `student_env`",
+    "# not into a specific environment like `learner_env`. So checking `learner_env`",
     "# directly for loaded packages won't work the way checking for an object would.",
-    "# However, if the student correctly submits `library(dplyr)`, it will be loaded",
+    "# However, if the learner correctly submits `library(dplyr)`, it will be loaded",
     "# into the session, and we can check for that using the CST below.",
     "test_that(\"Did you load `dplyr`?\", {",
     "  if (!(\"dplyr\" %in% tolower((.packages())))) {",
