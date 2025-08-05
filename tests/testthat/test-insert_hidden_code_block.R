@@ -124,7 +124,7 @@ expected_block <- paste(
   'test_that("Submit `x <- 2` exactly", {',
   '',
   cst_ignore_comments,
-  '  if (trimws(learner_code) != "x <- 2") {',
+  '  if (learner_code_no_comments != "x <- 2") {',
   '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
   '  } else {',
   '    succeed()',
