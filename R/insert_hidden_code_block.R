@@ -165,15 +165,6 @@ start_csts <- paste(
   sep = "\n"
 )
 
-cst_ignore_comments <- paste(
-  '  # Remove comments from each line, collapse to a single string, and trim',
-  '  learner_code_split <- unlist(strsplit(learner_code, "\\n"))',
-  '  learner_code_no_comments <- gsub("#.*", "", learner_code_split)',
-  '  learner_code_no_comments <- trimws(paste(learner_code_no_comments, collapse = " "))',
-  '',
-  sep = "\n"
-)
-
 hidden_cb_end <- "```"
 
 # =============================================================================
@@ -230,7 +221,6 @@ hidden_code_block_no_mod <- function() {
     '# scaffolded code, a single exact match test is sufficient.',
     'test_that("Submit `x <- 2` exactly", {',
     '',
-    cst_ignore_comments,
     '  if (learner_code_no_comments != "x <- 2") {',
     '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
     '  } else {',
