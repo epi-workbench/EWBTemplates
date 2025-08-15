@@ -113,7 +113,7 @@ expected_block <- paste(
   '# Since the learner is only expected to click submit and not modify the',
   '# scaffolded code, a single exact match test is sufficient.',
   'test_that("Submit `x <- 2` exactly", {',
-  '  if (learner_code != "x <- 2") {',
+  '  if (trimws(learner_code) != "x <- 2") {',
   '    fail("This code block already contains the correct code. Please submit it without making any changes. \nIf you accidentally modified the code, click the reset button (\U0001F501) on the toolbar to restore the original version. \nWant to experiment or try something different? Open the interactive code console (</>) to explore safely without affecting your submission.")',
   '  } else {',
   '    succeed()',
