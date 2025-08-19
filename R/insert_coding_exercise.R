@@ -162,7 +162,7 @@ set_active_submission <- paste(
   sep = "\n"
 )
 
-evaluate_learner_submission_no_blank_line <- paste(
+evaluate_learner_submission_coding_exercise <- paste(
   "# Gracefully evaluate code (prevents early error from stopping tests)",
   "try(eval(parse(text = learner_code), envir = learner_env), silent = TRUE)",
   sep = "\n"
@@ -172,10 +172,7 @@ test_code_block_begin <- paste(
   "```{r, type=test}"
 )
 
-start_csts <- paste(
-  "# Code Submission Tests (CSTs)",
-  "# -----------------------------------------------------------------------------",
-  "",
+start_csts_coding_exercise <- paste(
   "# 1 - Check that `____` was replaced with something",
   'test_that("- All blanks `____` were replaced", {',
   '  if (grepl("____", learner_code, fixed = TRUE)) {',
@@ -212,11 +209,11 @@ coding_exercise_default <- function() {
     "wrong_1 <- '[INSERT]'",
     "",
     set_active_submission,
-    evaluate_learner_submission_no_blank_line,
+    evaluate_learner_submission_coding_exercise,
     code_block_end,
     "",
     test_code_block_begin,
-    start_csts,
+    start_csts_coding_exercise,
     '# 2 - Check ...',
     'test_that("Concise statement of the test\'s purpose", {',
     '  if (condition 1) {',
@@ -245,13 +242,10 @@ coding_exercise_no_mod <- function() {
     "correct <- 'x <- 2'",
     "",
     set_active_submission,
-    evaluate_learner_submission_no_blank_line,
+    evaluate_learner_submission_coding_exercise,
     code_block_end,
     "",
     test_code_block_begin,
-    "# Code Submission Tests (CSTs)",
-    "# -----------------------------------------------------------------------------",
-    "",
     '# 1 - Check to make sure the code is submitted without modification',
     '# Since the learner is only expected to click submit and not modify the',
     '# scaffolded code, a single exact match test is sufficient.',
@@ -291,11 +285,11 @@ coding_exercise_load_package <- function() {
     "# detach(\"package:dplyr\", unload = TRUE)",
     "",
     set_active_submission,
-    evaluate_learner_submission_no_blank_line,
+    evaluate_learner_submission_coding_exercise,
     code_block_end,
     "",
     test_code_block_begin,
-    start_csts,
+    start_csts_coding_exercise,
     "# 2 - Check that dplyr was loaded",
     "# Calling `library(dplyr)` loads the package into the namespace of the R session,",
     "# not into a specific environment like `learner_env`. So checking `learner_env`",
