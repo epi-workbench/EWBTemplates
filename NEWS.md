@@ -11,6 +11,10 @@
     - keeps lesson files shorter
     - makes CSTs easier to locate in the file outline
     - **avoids inconsistencies that could arise from duplicating CSTs across multiple blocks**
+    
+- Update the `insert_hidden_code_block()` function.
+  - We added a line for `expected_code` to the CST in the no modification code blocks template. This makes it easier to test submitted code that spans multiple lines.
+  - The failure message in the in the no modification code blocks template is now spread across multiple lines to make it easier to read.
 
 # EWBTemplates 0.0.9007
 
