@@ -33,6 +33,7 @@ if (interactive()) insert_hints()
 \href{https://github.com/epi-workbench/EWBTemplates/wiki/Hints}{Hints wiki page}
 
 Other Insert Addins: 
+\code{\link{insert_coding_exercise}()},
 \code{\link{insert_hidden_code_block}()},
 \code{\link{insert_initial_code_block}()},
 \code{\link{insert_lesson_yaml_header}()},

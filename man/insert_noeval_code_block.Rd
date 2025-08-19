@@ -24,6 +24,7 @@ For more information on code blocks see: https://github.com/epi-workbench/EWBTem
 }
 \seealso{
 Other Insert Addins: 
+\code{\link{insert_coding_exercise}()},
 \code{\link{insert_hidden_code_block}()},
 \code{\link{insert_hints}()},
 \code{\link{insert_initial_code_block}()},

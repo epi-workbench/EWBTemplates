@@ -1,3 +1,17 @@
+# EWBTemplates 0.0.9008
+
+- Add the `insert_coding_exercise()` function.
+  - This RStudio Addin interactively inserts a complete exercise template into the active Quarto lesson at the current cursor location. The template includes:
+    - an exercise code block
+    - a solution code block
+    - a hidden code block
+    - a test code block
+    - a hint block
+  - The hidden code block contains only example learner code (no CSTs). CSTs are included exclusively in the test block. This design:
+    - keeps lesson files shorter
+    - makes CSTs easier to locate in the file outline
+    - **avoids inconsistencies that could arise from duplicating CSTs across multiple blocks**
+
 # EWBTemplates 0.0.9007
 
 - Update the `insert_hidden_code_block()` function.
