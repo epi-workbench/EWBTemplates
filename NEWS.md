@@ -13,6 +13,8 @@
     - The term "learner" is inclusive and reflects the diverse audience of Epi-Workbench, which includes health professionals and the general public.
     - Unlike "student," it does not imply a formal school setting, grading, or enrollment.
     - Unlike "member," it conveys an active process of gaining knowledge rather than a passive association with a group.
+    
+  - Update `test_that()` descriptions. They should be concise statements of the CST's purpose. Guidance for learners will be provided in failure messages only.
 
 # EWBTemplates 0.0.9006
 
