@@ -48,6 +48,11 @@ Description: Insert the standard no evalution code block template into a Quarto 
 Binding: insert_noeval_code_block
 Interactive: false
 
+Name: Insert CST
+Description: Interactively choose and insert a CST template at the cursor
+Binding: insert_cst
+Interactive: true
+
 Name: Insert CST - Blanks Replaced
 Description: Inserts a testthat block that checks for remaining ____ in learner_code.
 Binding: insert_cst_blanks
