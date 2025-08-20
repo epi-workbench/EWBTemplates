@@ -1,3 +1,11 @@
+# EWBTemplates 0.0.9009
+
+- Added the `insert_test_blanks()` function.
+
+  - `insert_test_blanks()` is an RStudio addin that inserts a templated **Code Submission Test (CST)** at the current cursor position.  
+  - The inserted test uses **testthat** to check whether any scaffolding blanks (`____`) remain in `learner_code`. If so, the test fails with a clear message; otherwise it succeeds.  
+  - A companion helper, `test_blanks_template()`, returns the template as a character string without inserting it, making it easier to write unit tests or reuse the template programmatically.
+
 # EWBTemplates 0.0.9008
 
 - Add the `insert_coding_exercise()` function.
