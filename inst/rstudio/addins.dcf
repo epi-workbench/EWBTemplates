@@ -47,3 +47,9 @@ Name: Insert No Evaluation Code Block
 Description: Insert the standard no evalution code block template into a Quarto file.
 Binding: insert_noeval_code_block
 Interactive: false
+
+Name: Insert CST - Blanks Replaced
+Description: Inserts a testthat block that checks for remaining ____ in learner_code.
+Binding: insert_cst_blanks
+Interactive: false
+

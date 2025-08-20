@@ -5,7 +5,7 @@
 #'
 #' @return A single character string containing the CST template.
 #' @export
-test_blanks_template <- function() {
+cst_blanks_template <- function() {
   paste0(
     "# 1 - Check that all blanks `____` were replaced\n",
     "test_that(\"All blanks `____` were replaced\", {\n",
@@ -20,14 +20,14 @@ test_blanks_template <- function() {
 
 #' Insert the "blanks replaced" CST template at the cursor (RStudio addin)
 #'
-#' @description Inserts the output of [test_blanks_template()] into the active
+#' @description Inserts the output of [cst_blanks_template()] into the active
 #'   RStudio document at the current cursor position.
 #'
 #' @return Invisibly returns the inserted template string.
 #' @importFrom rstudioapi isAvailable insertText
 #' @export
-insert_test_blanks <- function() {
-  txt <- test_blanks_template()
+insert_cst_blanks <- function() {
+  txt <- cst_blanks_template()
   if (rstudioapi::isAvailable()) {
     rstudioapi::insertText(text = txt)
   }

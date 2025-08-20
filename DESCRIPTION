@@ -17,8 +17,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     tibble,
-    vdiffr,
-    rstudioapi
+    vdiffr
 Depends: 
     R (>= 2.10)
 Imports: 
@@ -26,5 +25,6 @@ Imports:
     ggplot2,
     here,
     miniUI,
-    shiny
+    shiny,
+    rstudioapi (>= 0.14)
 Config/testthat/edition: 3

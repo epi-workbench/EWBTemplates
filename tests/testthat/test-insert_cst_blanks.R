@@ -1,5 +1,5 @@
 # ===========================================================================
-# Unit tests for the test_blanks_template() function.
+# Unit tests for the cst_blanks_template() function.
 # ===========================================================================
 
 test_that("returns the exact expected template", {
@@ -14,14 +14,14 @@ test_that("returns the exact expected template", {
     "})\n"
   )
 
-  out <- test_blanks_template()
+  out <- cst_blanks_template()
   expect_type(out, "character")
   expect_identical(out, expected)
 })
 
 
 # ===========================================================================
-# Unit tests for the insert_test_blanks() function.
+# Unit tests for the insert_cst_blanks() function.
 # ===========================================================================
 
 test_that("inserts via rstudioapi when available, returns invisibly", {
@@ -31,9 +31,9 @@ test_that("inserts via rstudioapi when available, returns invisibly", {
 
   testthat::with_mocked_bindings(
     {
-      expect_invisible(insert_test_blanks())
+      expect_invisible(insert_cst_blanks())
       expect_type(inserted_text, "character")
-      expect_identical(inserted_text, test_blanks_template())
+      expect_identical(inserted_text, cst_blanks_template())
     },
     .package    = "rstudioapi",
     isAvailable = function(...) TRUE,
@@ -48,7 +48,7 @@ test_that("does not attempt insertion if rstudioapi not available", {
 
   testthat::with_mocked_bindings(
     {
-      expect_invisible(insert_test_blanks())
+      expect_invisible(insert_cst_blanks())
       expect_false(called_insert)
     },
     .package    = "rstudioapi",
