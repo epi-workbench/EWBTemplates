@@ -60,7 +60,7 @@ insert_cst <- function() {
       entry <- templates[[key]]
       shiny::tagList(
         shiny::tags$p(shiny::tags$strong("Description:")),
-        shiny::tags$p(if (!is.null(entry$description)) entry$description else "—"),
+        shiny::tags$p(if (!is.null(entry$description)) entry$description else "-"),
         shiny::tags$details(
           open = FALSE,
           shiny::tags$summary("Show raw preview"),
@@ -75,7 +75,7 @@ insert_cst <- function() {
     # Preview just shows the preview pane (no-op beyond rendering)
     shiny::observeEvent(input$preview_btn, {
       shiny::req(input$template)
-      # No side effects—preview is rendered reactively above.
+      # No side effects-preview is rendered reactively above.
     })
 
     # Insert: call the registered function

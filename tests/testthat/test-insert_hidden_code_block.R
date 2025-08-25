@@ -51,7 +51,7 @@ start_csts <- paste(
   "# -----------------------------------------------------------------------------",
   "",
   "# 1 - Check that `____` was replaced with something",
-  'test_that("- All blanks `____` were replaced", {',
+  'test_that("All blanks `____` were replaced", {',
   '  if (grepl("____", learner_code, fixed = TRUE)) {',
   '    fail("It looks like your submission still contains `____`. Please replace `____` to complete the code.")',
   '  } else {',
