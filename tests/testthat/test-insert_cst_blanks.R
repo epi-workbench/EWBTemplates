@@ -5,7 +5,7 @@
 test_that("returns the exact expected template", {
   expected <- paste0(
     "# 1 - Check that all blanks `____` were replaced\n",
-    "test_that(\"All blanks `____` were replaced\", {\n",
+    "test_that(desc = \"All blanks `____` were replaced\", {\n",
     "  if (grepl(\"____\", learner_code, fixed = TRUE)) {\n",
     "    fail(\"It looks like your submission still contains `____`. Please replace `____` to complete the code.\")\n",
     "  } else {\n",

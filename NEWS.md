@@ -1,3 +1,13 @@
+# EWBTemplates 0.0.9010
+
+- Updated all `test_that()` calls across EWBTemplates (including CST templates, helper functions, and internal tests) to use the explicit `desc =` argument.
+
+  - For example: `test_that(desc = "checks object creation", { ... })`
+  
+  - This change prevents `test_that()` descriptions from cluttering the RStudio Document Outline, improving navigation and readability in lesson and test files.
+  
+  - No functional changes to CST behavior or output.
+
 # EWBTemplates 0.0.9009
 
 - Added the `insert_cst_blanks()` function.
